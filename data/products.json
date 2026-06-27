@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Digital Air Fryer",
+    "price": 89.99,
+    "image": "images/products/air-fryer.jpg",
+    "category": "Air Fryers",
+    "description": "Cook crispy meals with little to no oil using rapid air circulation technology.",
+    "features": [
+      "8-Quart Capacity",
+      "Digital Touchscreen",
+      "10 Cooking Presets",
+      "Dishwasher Safe Basket"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Coffee Maker",
+    "price": 119.99,
+    "image": "images/products/coffee-maker.jpg",
+    "category": "Coffee Makers",
+    "description": "Brew rich, flavorful coffee every morning with programmable settings.",
+    "features": [
+      "12-Cup Capacity",
+      "Programmable Timer",
+      "Auto Shutoff",
+      "Reusable Filter"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "High-Speed Blender",
+    "price": 74.99,
+    "image": "images/products/blender.jpg",
+    "category": "Blenders",
+    "description": "Blend smoothies, soups, and sauces effortlessly with a powerful motor.",
+    "features": [
+      "1200W Motor",
+      "Glass Pitcher",
+      "5 Speed Settings",
+      "Pulse Function"
+    ]
+  }
+]

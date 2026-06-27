@@ -22,7 +22,11 @@
           <li><a href="products.html">Products</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="cart.html">Cart</a></li>
+          <li>
+            <a href="cart.html">
+              Cart (<span id="cart-count">0</span>)
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -31,15 +35,14 @@
 
       <section id="hero">
         <div class="hero-content">
-          <h1>Upgrade Your Kitchen</h1>
+          <h1>Modern Kitchen Essentials</h1>
 
           <p>
-            Discover modern kitchen appliances designed
-            to make cooking easier.
+            Upgrade your kitchen with high-quality appliances built for everyday cooking.
           </p>
 
           <a href="products.html" class="hero-button">
-            Shop Now
+            Shop Collection
           </a>
         </div>
       </section>
@@ -48,40 +51,62 @@
         <h2>Shop by Category</h2>
 
         <div class="category-grid">
-          <div class="category-card">Air Fryers</div>
-          <div class="category-card">Coffee Makers</div>
-          <div class="category-card">Blenders</div>
-          <div class="category-card">Mixers</div>
+
+          <div class="category-card">
+            <h3>Air Fryers</h3>
+            <p>Healthy cooking made simple.</p>
+          </div>
+
+          <div class="category-card">
+            <h3>Coffee Makers</h3>
+            <p>Brew café-quality coffee at home.</p>
+          </div>
+
+          <div class="category-card">
+            <h3>Blenders</h3>
+            <p>Smoothies, sauces, and more.</p>
+          </div>
+
+          <div class="category-card">
+            <h3>Mixers</h3>
+            <p>Perfect baking starts here.</p>
+          </div>
+
         </div>
       </section>
 
-      <section id="featured-products">
-        <h2>Featured Products</h2>
+     <section id="featured-products">
 
-        <div class="product-grid">
-          <div class="product-card">Product 1</div>
-          <div class="product-card">Product 2</div>
-          <div class="product-card">Product 3</div>
-        </div>
-      </section>
+  <h2>Featured Products</h2>
+
+  <div id="product-grid" class="product-grid">
+
+  </div>
+
+</section>
 
       <section id="why-us">
+
         <h2>Why Choose Us?</h2>
 
         <ul>
           <li>🚚 Fast Shipping</li>
-          <li>⭐ Quality Products</li>
-          <li>💬 Friendly Support</li>
-          <li>💰 Competitive Prices</li>
+          <li>🔒 Secure Checkout</li>
+          <li>⭐ Premium Products</li>
+          <li>💬 Friendly Customer Support</li>
         </ul>
+
       </section>
 
     </main>
 
     <footer>
+
       <p>&copy; 2026 Kitchen Shop</p>
+
     </footer>
 
+    <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
 
   </body>
