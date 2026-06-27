@@ -1,60 +1,39 @@
 async function loadProduct() {
-
-  const params = new URLSearchParams(window.location.search);
-
-  const id = Number(params.get("id"));
-
-  const response = await fetch("data/products.json");
-
-  const products = await response.json();
-
-  const product = products.find(p => p.id === id);
-
   const container = document.getElementById("product-detail");
+  const id = Number(new URLSearchParams(window.location.search).get("id"));
 
-  if (!product) {
+  try {
+    const response = await fetch("js/data/products.json");
 
-    container.innerHTML = "<h2>Product not found.</h2>";
+    if (!response.ok) {
+      throw new Error(`Unable to load products (${response.status})`);
+    }
 
-    return;
+    const products = await response.json();
+    const product = products.find(item => item.id === id);
 
-  }
-
-  container.innerHTML = `
-    <div class="product-layout">
-
-      <div class="product-image">
-        <img src="${product.image}" alt="${product.name}">
-      </div>
-
-      <div class="product-info">
-
-        <h1>${product.name}</h1>
-
-        <h2>$${product.price.toFixed(2)}</h2>
-
-        <p class="description">${product.description}</p>
-
-        <div class="features">
-          <h3>Key Features</h3>
-          <ul>
-            ${product.features.map(f => `<li>${f}</li>`).join("")}
-          </ul>
+    if (!product) {
+      container.innerHTML = `
+        <div class="catalog-message">
+          <h1>Product not found</h1>
+          <p>The product may have moved or is no longer available.</p>
+          <a class="hero-button" href="products.html">Back to Products</a>
         </div>
+      `;
+      return;
+    }
 
-        <button id="add-cart">Add to Cart</button>
-
+    ProductUI.renderProductDetail(container, product);
+  } catch (error) {
+    container.innerHTML = `
+      <div class="catalog-message">
+        <h1>Product unavailable</h1>
+        <p>Please refresh the page or browse the rest of the collection.</p>
+        <a class="hero-button" href="products.html">Browse Products</a>
       </div>
-
-    </div>
-  `;
-
-  document
-    .getElementById("add-cart")
-    .addEventListener("click", () => {
-      addToCart(product);
-    });
-
+    `;
+    console.error(error);
+  }
 }
 
 loadProduct();

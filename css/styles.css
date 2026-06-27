@@ -903,3 +903,159 @@ select:focus-visible {
     flex: 1 1 calc(50% - 10px);
   }
 }
+
+/* =========================
+   Cart State UI
+========================= */
+
+.cart-page h1 {
+  margin-bottom: 32px;
+  color: #1F2937;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+#cart-items {
+  display: grid;
+  gap: 16px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  gap: 24px;
+  align-items: center;
+  margin: 0;
+  border: 1px solid #E5E7EB;
+}
+
+.cart-item-details h2 {
+  margin: 0 0 4px;
+  color: #1F2937;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.cart-item-price {
+  color: #6B7280;
+  font-size: 0.9rem;
+}
+
+.qty-controls {
+  margin: 0;
+  gap: 0;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qty-controls button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: #F9FAFB;
+  color: #374151;
+  font-size: 1.15rem;
+}
+
+.qty-controls button:hover {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.qty-value {
+  min-width: 38px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cart-line-total {
+  min-width: 80px;
+  color: #1F2937;
+  text-align: right;
+}
+
+.cart-item .remove {
+  margin: 0;
+}
+
+.cart-summary {
+  max-width: 420px;
+  margin: 28px 0 0 auto;
+  padding: 24px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.cart-summary > span,
+.cart-summary > strong {
+  display: inline-block;
+  width: 49%;
+  color: #1F2937;
+  font-size: 1.2rem;
+}
+
+.cart-summary > strong {
+  text-align: right;
+}
+
+.cart-summary p {
+  margin-top: 10px;
+  color: #6B7280;
+  font-size: 0.85rem;
+}
+
+.empty-cart {
+  padding: 64px 24px;
+  border: 1px dashed #D1D5DB;
+  border-radius: 14px;
+  background: white;
+  text-align: center;
+}
+
+.empty-cart h2 {
+  margin-bottom: 10px;
+}
+
+.empty-cart p {
+  max-width: 500px;
+  margin: 0 auto 28px;
+  color: #6B7280;
+}
+
+.add-cart.added,
+#add-cart.added {
+  background: #059669;
+}
+
+.add-cart:disabled,
+#add-cart:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .cart-item {
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+  }
+
+  .cart-item-details {
+    grid-column: 1 / -1;
+  }
+
+  .cart-line-total {
+    text-align: left;
+  }
+
+  .cart-item .remove {
+    justify-self: end;
+  }
+
+  .cart-summary {
+    max-width: none;
+  }
+}

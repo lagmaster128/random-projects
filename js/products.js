@@ -11,7 +11,7 @@ const filterButtons = document.querySelectorAll(".filter-button");
 
 async function loadProducts() {
   try {
-    const response = await fetch("data/products.json");
+    const response = await fetch("js/data/products.json");
 
     if (!response.ok) {
       throw new Error(`Unable to load products (${response.status})`);
@@ -75,29 +75,7 @@ function displayProducts(productList) {
   }
 
   productList.forEach(product => {
-    const card = document.createElement("article");
-    card.className = "product-card";
-
-    card.innerHTML = `
-      <a class="product-image-link" href="product.html?id=${product.id}">
-        <img src="${product.image}" alt="${product.name}">
-      </a>
-
-      <div class="product-card-content">
-        <p class="product-category">${product.category}</p>
-        <h3>
-          <a href="product.html?id=${product.id}">${product.name}</a>
-        </h3>
-        <p class="product-price">$${product.price.toFixed(2)}</p>
-        <button class="add-cart" type="button">Add to Cart</button>
-      </div>
-    `;
-
-    card.querySelector(".add-cart").addEventListener("click", () => {
-      addToCart(product);
-    });
-
-    grid.appendChild(card);
+    grid.appendChild(ProductUI.createProductCard(product));
   });
 }
 

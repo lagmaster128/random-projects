@@ -1,29 +1,25 @@
 async function loadProducts() {
-  const response = await fetch("data/products.json");
-  const products = await response.json();
-
   const productGrid = document.getElementById("product-grid");
 
-  products.forEach(product => {
+  try {
+    const response = await fetch("js/data/products.json");
 
-    const card = document.createElement("div");
-    card.className = "product-card";
+    if (!response.ok) {
+      throw new Error(`Unable to load products (${response.status})`);
+    }
 
-    card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-
-      <h3>${product.name}</h3>
-
-      <p>$${product.price.toFixed(2)}</p>
-
-    <button class="add-cart">
-      Add to Cart
-    </button>
+    const products = await response.json();
+    products.forEach(product => {
+      productGrid.appendChild(ProductUI.createProductCard(product));
+    });
+  } catch (error) {
+    productGrid.innerHTML = `
+      <p class="catalog-message">
+        Featured products could not be loaded. Please refresh the page.
+      </p>
     `;
-
-    productGrid.appendChild(card);
-
-  });
+    console.error(error);
+  }
 }
 
 loadProducts();
