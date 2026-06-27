@@ -1,4 +1,13 @@
 let products = [];
+let activeCategory = "all";
+let searchTerm = "";
+let sortMode = "featured";
+
+const grid = document.getElementById("product-grid");
+const searchInput = document.getElementById("search");
+const sortSelect = document.getElementById("sort");
+const productCount = document.getElementById("product-count");
+const filterButtons = document.querySelectorAll(".filter-button");
 
 async function loadProducts() {
   try {
@@ -9,59 +18,113 @@ async function loadProducts() {
     }
 
     products = await response.json();
-    displayProducts(products);
+    setInitialCategory();
+    applyCatalogFilters();
   } catch (error) {
-    const grid = document.getElementById("product-grid");
-    grid.innerHTML = "<p>Products could not be loaded. Please refresh the page.</p>";
+    grid.innerHTML = `
+      <p class="catalog-message">
+        Products could not be loaded. Please refresh the page.
+      </p>
+    `;
+    productCount.textContent = "";
     console.error(error);
   }
 }
 
+function setInitialCategory() {
+  const requestedCategory = new URLSearchParams(window.location.search).get("category");
+  const categories = new Set(products.map(product => product.category));
+
+  if (requestedCategory && categories.has(requestedCategory)) {
+    activeCategory = requestedCategory;
+  }
+
+  updateActiveFilterButton();
+}
+
+function applyCatalogFilters() {
+  let visibleProducts = products.filter(product => {
+    const matchesCategory =
+      activeCategory === "all" || product.category === activeCategory;
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if (sortMode === "price-asc") {
+    visibleProducts = [...visibleProducts].sort((a, b) => a.price - b.price);
+  }
+
+  displayProducts(visibleProducts);
+}
+
 function displayProducts(productList) {
-
-  const grid = document.getElementById("product-grid");
-
   grid.innerHTML = "";
 
-  productList.forEach(product => {
+  productCount.textContent = `${productList.length} ${
+    productList.length === 1 ? "product" : "products"
+  }`;
 
-    const card = document.createElement("div");
+  if (productList.length === 0) {
+    grid.innerHTML = `
+      <p class="catalog-message">
+        No products match those filters. Try another search or category.
+      </p>
+    `;
+    return;
+  }
+
+  productList.forEach(product => {
+    const card = document.createElement("article");
     card.className = "product-card";
 
     card.innerHTML = `
-
-      <a href="product.html?id=${product.id}">
+      <a class="product-image-link" href="product.html?id=${product.id}">
         <img src="${product.image}" alt="${product.name}">
       </a>
 
-      <h3>${product.name}</h3>
-
-      <p>$${product.price.toFixed(2)}</p>
-
-      <button class="add-cart">Add to Cart</button>
-
+      <div class="product-card-content">
+        <p class="product-category">${product.category}</p>
+        <h3>
+          <a href="product.html?id=${product.id}">${product.name}</a>
+        </h3>
+        <p class="product-price">$${product.price.toFixed(2)}</p>
+        <button class="add-cart" type="button">Add to Cart</button>
+      </div>
     `;
 
-    // 👇 THIS is the important part
     card.querySelector(".add-cart").addEventListener("click", () => {
       addToCart(product);
     });
 
     grid.appendChild(card);
-
   });
 }
 
-document
-  .getElementById("search")
-  .addEventListener("input", function () {
-    const term = this.value.toLowerCase();
-
-    const filtered = products.filter(product =>
-      product.name.toLowerCase().includes(term)
-    );
-
-    displayProducts(filtered);
+function updateActiveFilterButton() {
+  filterButtons.forEach(button => {
+    const isActive = button.dataset.category === activeCategory;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
+}
+
+searchInput.addEventListener("input", event => {
+  searchTerm = event.target.value.trim().toLowerCase();
+  applyCatalogFilters();
+});
+
+sortSelect.addEventListener("change", event => {
+  sortMode = event.target.value;
+  applyCatalogFilters();
+});
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    activeCategory = button.dataset.category;
+    updateActiveFilterButton();
+    applyCatalogFilters();
+  });
+});
 
 loadProducts();
