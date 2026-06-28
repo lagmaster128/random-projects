@@ -29,7 +29,8 @@
       ...bundle,
       handle: bundle.handle || createHandle(bundle.name),
       includedProducts: [...(bundle.includedProducts || [])],
-      comingSoon: Boolean(bundle.comingSoon)
+      optionalAdditions: [...(bundle.optionalAdditions || [])],
+      faqs: (bundle.faqs || []).map(faq => ({ ...faq }))
     };
   }
 
@@ -45,7 +46,9 @@
     return bundle
       ? {
           ...bundle,
-          includedProducts: [...bundle.includedProducts]
+          includedProducts: [...bundle.includedProducts],
+          optionalAdditions: [...bundle.optionalAdditions],
+          faqs: bundle.faqs.map(faq => ({ ...faq }))
         }
       : null;
   }
@@ -62,8 +65,18 @@
     );
   }
 
+  async function getBundlesByType(type) {
+    const bundles = await loadBundles();
+    const requestedType = String(type || "");
+
+    return bundles
+      .filter(bundle => !requestedType || bundle.type === requestedType)
+      .map(cloneBundle);
+  }
+
   global.BundleData = Object.freeze({
     getBundleByHandle,
-    getBundles
+    getBundles,
+    getBundlesByType
   });
 })(window);

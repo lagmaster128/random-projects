@@ -5,24 +5,24 @@ async function loadStorefront() {
 
   const journeys = [
     {
-      title: "Moving into your first apartment",
+      title: "Moving into my first apartment",
       description: "Start with the essentials you'll actually use.",
-      href: "bundle.html?handle=first-apartment-kit"
+      href: "bundles.html?type=starter"
     },
     {
       title: "Cooking more at home",
-      description: "Practical tools for everyday meals.",
-      href: "bundle.html?handle=everyday-cooking-kit"
+      description: "Reliable tools for everyday meals.",
+      href: "bundles.html?type=cooking"
     },
     {
-      title: "Looking for more storage",
+      title: "Need more storage",
       description: "Simple organization for smaller kitchens.",
-      href: "bundle.html?handle=small-kitchen-organization-kit"
+      href: "bundles.html?type=organization"
     },
     {
-      title: "Decluttering your kitchen",
-      description: "Products chosen to earn their place.",
-      href: "bundles.html#minimalist-collection"
+      title: "Simplifying my kitchen",
+      description: "Own less. Cook better.",
+      href: "bundles.html?type=minimal"
     }
   ];
 
@@ -40,7 +40,7 @@ async function loadStorefront() {
       bundleGrid.appendChild(BundleUI.createBundleCard(bundle));
     });
 
-    products.forEach(product => {
+    products.slice(0, 3).forEach(product => {
       productGrid.appendChild(ProductUI.createProductCard(product));
     });
   } catch (error) {

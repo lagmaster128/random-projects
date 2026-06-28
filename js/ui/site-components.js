@@ -19,6 +19,7 @@
               ${createNavItem("index.html", "Home", currentPage)}
               ${createNavItem("bundles.html", "Bundles", currentPage)}
               ${createNavItem("products.html", "Products", currentPage)}
+              ${createNavItem("guides.html", "Guides", currentPage)}
               ${createNavItem("about.html", "About", currentPage)}
               ${createNavItem("contact.html", "Contact", currentPage)}
               <li>
@@ -50,7 +51,8 @@
     const isCurrent =
       currentPage === href ||
       (href === "products.html" && currentPage === "product.html") ||
-      (href === "bundles.html" && currentPage === "bundle.html");
+      (href === "bundles.html" && currentPage === "bundle.html") ||
+      (href === "guides.html" && currentPage === "guide.html");
     const current = isCurrent ? ' aria-current="page"' : "";
     return `<li><a href="${href}"${current}>${label}</a></li>`;
   }

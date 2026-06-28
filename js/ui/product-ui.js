@@ -51,22 +51,8 @@
           </div>
         </div>
 
-        <section class="product-philosophy" aria-labelledby="product-philosophy-heading">
-          <h2 id="product-philosophy-heading">Why we chose this product</h2>
-          <div class="philosophy-badges">
-            ${product.philosophy.map(createPhilosophyBadge).join("")}
-          </div>
-          <p>${product.philosophyExplanation}</p>
-        </section>
-
-        <section class="product-benefits" aria-labelledby="product-benefits-heading">
-          <h2 id="product-benefits-heading">Why you'll like it</h2>
-          <div class="benefit-grid">
-            ${createBenefit("What it solves", product.problemSolved)}
-            ${createBenefit("Why it's practical", product.whyItsPractical)}
-            ${createBenefit("Space saving", product.spaceSaving)}
-            ${createBenefit("Easy to clean", product.easyToClean)}
-          </div>
+        <section class="product-selection" aria-labelledby="product-selection-heading">
+          <div class="product-selection-content"></div>
         </section>
 
         <section class="features" aria-labelledby="product-features-heading">
@@ -89,6 +75,10 @@
 
     bindAddButton(container.querySelector("#add-cart"), product);
     setupImageFallback(container);
+    global.GuidanceUI.renderProductPhilosophy(
+      container.querySelector(".product-selection-content"),
+      product
+    );
 
     const relatedGrid = container.querySelector(".related-product-grid");
 
@@ -102,25 +92,6 @@
     relatedProducts.forEach(relatedProduct => {
       relatedGrid.appendChild(createProductCard(relatedProduct));
     });
-  }
-
-  function createBenefit(heading, copy) {
-    return `
-      <article class="benefit-card">
-        <h3>${heading}</h3>
-        <p>${copy}</p>
-      </article>
-    `;
-  }
-
-  function createPhilosophyBadge(value) {
-    const labels = {
-      essential: "Essential",
-      multipurpose: "Multi-purpose",
-      spacesaving: "Space-saving"
-    };
-
-    return `<span class="philosophy-badge">${labels[value] || value}</span>`;
   }
 
   function getProductUrl(product) {

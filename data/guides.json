@@ -1,0 +1,78 @@
+[
+  {
+    "handle": "first-apartment-kitchen-guide",
+    "title": "First Apartment Kitchen Guide",
+    "description": "A clear starting point for choosing useful kitchen basics without overbuying.",
+    "sections": [
+      {
+        "heading": "Start with your regular meals",
+        "body": "List what you already cook each week before choosing tools or appliances."
+      },
+      {
+        "heading": "Build in stages",
+        "body": "Begin with daily essentials. Add specialized tools only when a repeated need becomes clear."
+      }
+    ],
+    "seo": {
+      "title": "First Apartment Kitchen Guide | Mino Kitchens",
+      "description": "Plan a practical first-apartment kitchen around the meals and routines you use most."
+    }
+  },
+  {
+    "handle": "small-kitchen-organization-guide",
+    "title": "Small Kitchen Organization Guide",
+    "description": "Simple principles for making limited counters and cabinets easier to use.",
+    "sections": [
+      {
+        "heading": "Protect working space",
+        "body": "Keep the main preparation area clear and store occasional tools away from the counter."
+      },
+      {
+        "heading": "Choose by frequency",
+        "body": "Place everyday items within reach and move less-used tools to higher or deeper storage."
+      }
+    ],
+    "seo": {
+      "title": "Small Kitchen Organization Guide | Mino Kitchens",
+      "description": "Organize a smaller kitchen around clear work areas and frequently used essentials."
+    }
+  },
+  {
+    "handle": "kitchen-essentials-checklist",
+    "title": "Kitchen Essentials Checklist",
+    "description": "A restrained checklist built around everyday cooking, cleaning, and storage.",
+    "sections": [
+      {
+        "heading": "Cover the basics first",
+        "body": "Prioritize preparation, cooking, serving, food storage, and cleaning before optional tools."
+      },
+      {
+        "heading": "Check before adding",
+        "body": "Ask whether an item solves a frequent problem or duplicates something you already own."
+      }
+    ],
+    "seo": {
+      "title": "Kitchen Essentials Checklist | Mino Kitchens",
+      "description": "Use a practical checklist to choose kitchen essentials without unnecessary extras."
+    }
+  },
+  {
+    "handle": "meal-prep-basics",
+    "title": "Meal Prep Basics",
+    "description": "A calm approach to preparing a few useful ingredients and meals ahead of time.",
+    "sections": [
+      {
+        "heading": "Prepare for real routines",
+        "body": "Choose meals you already enjoy and prepare only the portions your week requires."
+      },
+      {
+        "heading": "Keep the system small",
+        "body": "One preparation block, a short ingredient list, and clear containers are often enough."
+      }
+    ],
+    "seo": {
+      "title": "Meal Prep Basics | Mino Kitchens",
+      "description": "Build a simple meal-prep routine around useful portions and familiar meals."
+    }
+  }
+]

@@ -17,29 +17,22 @@
       return;
     }
 
+    const [includedProducts, optionalProducts] = await Promise.all([
+      StoreData.getProductsByIds(bundle.includedProducts),
+      StoreData.getProductsByHandles(bundle.optionalAdditions)
+    ]);
+
     document.title = `${bundle.name} | Mino Kitchens`;
-    container.innerHTML = `
-      <p class="eyebrow">Coming Soon</p>
-      <h1>${bundle.name}</h1>
-      <p>${bundle.description}</p>
-
-      <div class="bundle-placeholder-details">
-        <div>
-          <span>Designed for</span>
-          <strong>${bundle.idealFor}</strong>
-        </div>
-        <div>
-          <span>Includes</span>
-          <strong>${bundle.includedProducts.length} products</strong>
-        </div>
-      </div>
-
-      <p class="bundle-status">Purchasing will be available when the bundle collection launches.</p>
-      <div class="placeholder-actions">
-        <a class="hero-button" href="products.html">Browse individual products</a>
-        <a class="secondary-button" href="bundles.html">All bundles</a>
-      </div>
-    `;
+    document.querySelector('meta[name="description"]').setAttribute(
+      "content",
+      bundle.problemSolved
+    );
+    BundleUI.renderBundleDetail(
+      container,
+      bundle,
+      includedProducts,
+      optionalProducts
+    );
   } catch (error) {
     container.innerHTML = `
       <p class="catalog-message">Bundle details could not be loaded. Please refresh the page.</p>

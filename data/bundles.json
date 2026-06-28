@@ -1,32 +1,98 @@
 [
   {
     "id": 1,
+    "type": "starter",
     "handle": "first-apartment-kit",
     "name": "First Apartment Kit",
-    "description": "Everything needed to start cooking with confidence.",
+    "description": "A focused starting point for a newly equipped kitchen.",
     "image": "",
-    "includedProducts": [1, 2, 3],
-    "idealFor": "First apartments and newly equipped kitchens.",
-    "comingSoon": true
+    "problemSolved": "Covers core daily routines without filling a new kitchen with rarely used tools.",
+    "idealFor": "First apartments, new homes, and anyone starting with an empty kitchen.",
+    "includedProducts": [2, 3],
+    "whyTogether": "These tools cover simple breakfasts, drinks, sauces, and basic meal preparation while using little counter space.",
+    "optionalAdditions": ["digital-air-fryer"],
+    "faqs": [
+      {
+        "question": "Can I start with only the included products?",
+        "answer": "Yes. The kit is designed as a useful foundation, not a complete appliance collection."
+      },
+      {
+        "question": "Do I need to buy everything at once?",
+        "answer": "No. Each product can be chosen separately as your routines become clearer."
+      }
+    ],
+    "ctaLabel": "Review the included products"
   },
   {
     "id": 2,
+    "type": "cooking",
     "handle": "everyday-cooking-kit",
     "name": "Everyday Cooking Kit",
-    "description": "Reliable tools for everyday meals.",
+    "description": "Reliable tools for uncomplicated meals at home.",
     "image": "",
+    "problemSolved": "Makes common weekday cooking tasks easier without requiring several single-purpose appliances.",
+    "idealFor": "People building a steady home-cooking routine with limited preparation time.",
     "includedProducts": [1, 3],
-    "idealFor": "People cooking simple weekday meals at home.",
-    "comingSoon": true
+    "whyTogether": "One appliance handles hot meals and reheating while the other supports drinks, soups, and sauces.",
+    "optionalAdditions": ["coffee-maker"],
+    "faqs": [
+      {
+        "question": "What meals does this kit support?",
+        "answer": "It supports simple roasted foods, reheated meals, smoothies, soups, and sauces."
+      },
+      {
+        "question": "Is it suitable for a small kitchen?",
+        "answer": "Yes. Both products replace several narrower tools and store in a compact footprint."
+      }
+    ],
+    "ctaLabel": "Review the included products"
   },
   {
     "id": 3,
+    "type": "organization",
     "handle": "small-kitchen-organization-kit",
     "name": "Small Kitchen Organization Kit",
-    "description": "Simple storage solutions for limited space.",
+    "description": "A considered set for keeping everyday routines compact.",
     "image": "",
+    "problemSolved": "Reduces countertop crowding by prioritizing compact tools that cover regular routines.",
+    "idealFor": "Smaller kitchens with limited cabinet and counter space.",
     "includedProducts": [2, 3],
-    "idealFor": "Small kitchens with limited cabinet and counter space.",
-    "comingSoon": true
+    "whyTogether": "Both products support frequent routines while remaining straightforward to clean and store.",
+    "optionalAdditions": ["digital-air-fryer"],
+    "faqs": [
+      {
+        "question": "How does this help with organization?",
+        "answer": "It focuses the appliance list on compact tools with clear, repeatable uses."
+      },
+      {
+        "question": "Will these products fit every kitchen?",
+        "answer": "Measure your available counter and cabinet space before choosing any appliance."
+      }
+    ],
+    "ctaLabel": "Review the included products"
+  },
+  {
+    "id": 4,
+    "type": "minimal",
+    "handle": "simplified-kitchen-kit",
+    "name": "Simplified Kitchen Kit",
+    "description": "Multi-purpose tools selected to earn their place.",
+    "image": "",
+    "problemSolved": "Replaces several narrow-use appliances with a smaller set of versatile tools.",
+    "idealFor": "People simplifying their kitchen or choosing fewer, more useful appliances.",
+    "includedProducts": [1, 3],
+    "whyTogether": "Together they cover everyday hot meals, reheating, drinks, soups, and sauces.",
+    "optionalAdditions": ["coffee-maker"],
+    "faqs": [
+      {
+        "question": "What makes this a simplified kit?",
+        "answer": "Every included product performs more than one useful task."
+      },
+      {
+        "question": "Should I add the optional product?",
+        "answer": "Only if brewed coffee is already part of your regular routine."
+      }
+    ],
+    "ctaLabel": "Review the included products"
   }
 ]

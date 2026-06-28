@@ -74,6 +74,8 @@
       features: [...(product.features || [])],
       philosophy: [...(product.philosophy || [])],
       philosophyExplanation: product.philosophyExplanation || "Chosen for practical, everyday use.",
+      whyChosen: product.whyChosen || product.whyItsPractical || "Chosen for practical, everyday use.",
+      bestFor: product.bestFor || "Everyday kitchen routines.",
       relatedProducts: [...(product.relatedProducts || [])],
       seo: {
         title: `${product.name} | Mino Kitchens`,
@@ -135,6 +137,16 @@
       .map(cloneProduct);
   }
 
+  async function getProductsByIds(ids) {
+    const requestedIds = (ids || []).map(String);
+    const catalog = await loadCatalog();
+
+    return requestedIds
+      .map(id => catalog.products.find(product => String(product.id) === id))
+      .filter(Boolean)
+      .map(cloneProduct);
+  }
+
   async function getCollections() {
     const catalog = await loadCatalog();
     return catalog.collections.map(collection => ({ ...collection }));
@@ -145,6 +157,7 @@
     getProductByHandle,
     getProductById,
     getProducts,
+    getProductsByIds,
     getProductsByHandles
   });
 })(window);
