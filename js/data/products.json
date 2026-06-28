@@ -9,18 +9,18 @@
     "collection": {
       "handle": "air-fryers",
       "title": "Air Fryers",
-      "description": "Crisp everyday favorites with less oil."
+      "description": "Appliances for cooking with less oil."
     },
-    "description": "Cook crispy meals with little to no oil using rapid air circulation technology.",
+    "description": "Cook crisp meals with minimal oil using rapid air circulation.",
     "seo": {
       "title": "Digital Air Fryer | Kitchen Shop",
-      "description": "Shop an 8-quart digital air fryer with ten presets and a dishwasher-safe basket."
+      "description": "An 8-quart digital air fryer with ten presets and a dishwasher-safe basket."
     },
     "features": [
-      "8-Quart Capacity",
-      "Digital Touchscreen",
-      "10 Cooking Presets",
-      "Dishwasher Safe Basket"
+      "8-quart capacity",
+      "Digital controls",
+      "10 cooking presets",
+      "Dishwasher-safe basket"
     ]
   },
   {
@@ -33,18 +33,18 @@
     "collection": {
       "handle": "coffee-makers",
       "title": "Coffee Makers",
-      "description": "Brew a better morning cup at home."
+      "description": "Appliances for simple at-home brewing."
     },
-    "description": "Brew rich, flavorful coffee every morning with programmable settings.",
+    "description": "Prepare up to 12 cups with programmable timing and automatic shutoff.",
     "seo": {
       "title": "Programmable Coffee Maker | Kitchen Shop",
-      "description": "Shop a programmable 12-cup coffee maker with auto shutoff and a reusable filter."
+      "description": "A programmable 12-cup coffee maker with automatic shutoff and a reusable filter."
     },
     "features": [
-      "12-Cup Capacity",
-      "Programmable Timer",
-      "Auto Shutoff",
-      "Reusable Filter"
+      "12-cup capacity",
+      "Programmable timer",
+      "Automatic shutoff",
+      "Reusable filter"
     ]
   },
   {
@@ -57,18 +57,18 @@
     "collection": {
       "handle": "blenders",
       "title": "Blenders",
-      "description": "Blend smoothies, soups, sauces, and more."
+      "description": "Tools for smoothies, soups, and sauces."
     },
-    "description": "Blend smoothies, soups, and sauces effortlessly with a powerful motor.",
+    "description": "Blend smoothies, soups, and sauces with a 1200-watt motor and five speed settings.",
     "seo": {
       "title": "High-Speed Blender | Kitchen Shop",
-      "description": "Shop a 1200-watt high-speed blender with a glass pitcher and five speed settings."
+      "description": "A 1200-watt blender with a glass pitcher and five speed settings."
     },
     "features": [
-      "1200W Motor",
-      "Glass Pitcher",
-      "5 Speed Settings",
-      "Pulse Function"
+      "1200-watt motor",
+      "Glass pitcher",
+      "Five speed settings",
+      "Pulse function"
     ]
   }
 ]

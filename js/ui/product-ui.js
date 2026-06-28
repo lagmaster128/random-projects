@@ -1,8 +1,7 @@
 (function createProductUI(global) {
   "use strict";
 
-  function createProductCard(product, options = {}) {
-    const { showCategory = true } = options;
+  function createProductCard(product) {
     const productUrl = getProductUrl(product);
     const card = document.createElement("article");
     card.className = "product-card";
@@ -15,11 +14,6 @@
       </a>
 
       <div class="product-card-content">
-        ${
-          showCategory
-            ? `<p class="product-category">${product.category}</p>`
-            : ""
-        }
         <h3>
           <a href="${productUrl}" itemprop="url">
             <span itemprop="name">${product.name}</span>
@@ -54,7 +48,7 @@
           <p class="description" itemprop="description">${product.description}</p>
 
           <div class="features">
-            <h3>Key Features</h3>
+            <h3>Details</h3>
             <ul>
               ${product.features.map(feature => `<li>${feature}</li>`).join("")}
             </ul>
