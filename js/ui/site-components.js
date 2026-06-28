@@ -5,11 +5,14 @@
     connectedCallback() {
       const currentPage = global.location.pathname.split("/").pop() || "index.html";
 
+      ensureFavicon();
+
       this.innerHTML = `
         <header class="site-header">
           <nav class="navbar" aria-label="Main navigation">
             <a class="logo" href="index.html" aria-label="Mino Kitchens home">
-              Mino Kitchens
+              <img src="images/brand/mino-kitchens-logo.svg" alt="">
+              <span>Mino Kitchens</span>
             </a>
 
             <ul class="nav-links">
@@ -36,6 +39,7 @@
     connectedCallback() {
       this.innerHTML = `
         <footer>
+          <img class="footer-logo" src="images/brand/mino-kitchens-logo.svg" alt="Mino Kitchens">
           <p>&copy; ${new Date().getFullYear()} Mino Kitchens</p>
         </footer>
       `;
@@ -49,6 +53,18 @@
       (href === "bundles.html" && currentPage === "bundle.html");
     const current = isCurrent ? ' aria-current="page"' : "";
     return `<li><a href="${href}"${current}>${label}</a></li>`;
+  }
+
+  function ensureFavicon() {
+    if (document.querySelector('link[rel="icon"]')) {
+      return;
+    }
+
+    const favicon = document.createElement("link");
+    favicon.rel = "icon";
+    favicon.type = "image/svg+xml";
+    favicon.href = "images/brand/mino-kitchens-logo.svg";
+    document.head.appendChild(favicon);
   }
 
   if (!customElements.get("site-header")) {

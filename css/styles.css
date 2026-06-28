@@ -2049,3 +2049,40 @@ a.secondary-button:hover,
 a.secondary-button:focus-visible {
   color: var(--mino-white);
 }
+
+/* =========================
+   Brand Mark
+========================= */
+
+.logo {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.logo img {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+}
+
+.footer-logo {
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  border: 2px solid var(--mino-white);
+  border-radius: 10px;
+}
+
+@media (max-width: 560px) {
+  .logo {
+    gap: 9px;
+  }
+
+  .logo img {
+    width: 36px;
+    height: 36px;
+  }
+}
