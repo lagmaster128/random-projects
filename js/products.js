@@ -80,7 +80,7 @@ function applyCatalogFilters() {
   let visibleProducts = products.filter(product => {
     const matchesCollection =
       activeCollection === "all" ||
-      product.collection.handle === activeCollection;
+      product.collectionHandles.includes(activeCollection);
     const matchesSearch = product.name.toLowerCase().includes(searchTerm);
 
     return matchesCollection && matchesSearch;

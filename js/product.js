@@ -18,8 +18,12 @@ async function loadProduct() {
       return;
     }
 
+    const relatedProducts = await StoreData.getProductsByHandles(
+      product.relatedProducts
+    );
+
     updateProductMetadata(product);
-    ProductUI.renderProductDetail(container, product);
+    ProductUI.renderProductDetail(container, product, relatedProducts);
   } catch (error) {
     renderProductMessage(
       container,

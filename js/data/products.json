@@ -1,74 +1,126 @@
-[
-  {
-    "id": 1,
-    "handle": "digital-air-fryer",
-    "name": "Digital Air Fryer",
-    "price": 89.99,
-    "image": "images/products/air-fryer.jpg",
-    "category": "Air Fryers",
-    "collection": {
-      "handle": "air-fryers",
-      "title": "Air Fryers",
-      "description": "Appliances for cooking with less oil."
+{
+  "collections": [
+    {
+      "handle": "storage",
+      "title": "Storage",
+      "description": "Simple ways to keep everyday items contained."
     },
-    "description": "Cook crisp meals with minimal oil using rapid air circulation.",
-    "seo": {
-      "title": "Digital Air Fryer | Kitchen Shop",
-      "description": "An 8-quart digital air fryer with ten presets and a dishwasher-safe basket."
+    {
+      "handle": "organization",
+      "title": "Organization",
+      "description": "Practical tools for clearer counters and cabinets."
     },
-    "features": [
-      "8-quart capacity",
-      "Digital controls",
-      "10 cooking presets",
-      "Dishwasher-safe basket"
-    ]
-  },
-  {
-    "id": 2,
-    "handle": "coffee-maker",
-    "name": "Coffee Maker",
-    "price": 119.99,
-    "image": "images/products/coffee-maker.jpg",
-    "category": "Coffee Makers",
-    "collection": {
-      "handle": "coffee-makers",
-      "title": "Coffee Makers",
-      "description": "Appliances for simple at-home brewing."
+    {
+      "handle": "cooking-essentials",
+      "title": "Cooking Essentials",
+      "description": "Reliable tools for regular cooking routines."
     },
-    "description": "Prepare up to 12 cups with programmable timing and automatic shutoff.",
-    "seo": {
-      "title": "Programmable Coffee Maker | Kitchen Shop",
-      "description": "A programmable 12-cup coffee maker with automatic shutoff and a reusable filter."
+    {
+      "handle": "meal-prep",
+      "title": "Meal Prep",
+      "description": "Tools that make weekly preparation easier."
     },
-    "features": [
-      "12-cup capacity",
-      "Programmable timer",
-      "Automatic shutoff",
-      "Reusable filter"
-    ]
-  },
-  {
-    "id": 3,
-    "handle": "high-speed-blender",
-    "name": "High-Speed Blender",
-    "price": 74.99,
-    "image": "images/products/blender.jpg",
-    "category": "Blenders",
-    "collection": {
-      "handle": "blenders",
-      "title": "Blenders",
-      "description": "Tools for smoothies, soups, and sauces."
+    {
+      "handle": "cleaning",
+      "title": "Cleaning",
+      "description": "Straightforward care for everyday kitchen spaces."
     },
-    "description": "Blend smoothies, soups, and sauces with a 1200-watt motor and five speed settings.",
-    "seo": {
-      "title": "High-Speed Blender | Kitchen Shop",
-      "description": "A 1200-watt blender with a glass pitcher and five speed settings."
+    {
+      "handle": "space-saving-tools",
+      "title": "Space-Saving Tools",
+      "description": "Practical solutions for smaller kitchens."
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "handle": "digital-air-fryer",
+      "name": "Digital Air Fryer",
+      "price": 89.99,
+      "image": "images/products/air-fryer.jpg",
+      "collectionHandles": [
+        "cooking-essentials",
+        "space-saving-tools"
+      ],
+      "description": "Cook crisp meals with minimal oil using rapid air circulation.",
+      "problemSolved": "Makes crisp meals with less oil and less countertop mess.",
+      "whyItsPractical": "Preset controls keep everyday cooking straightforward.",
+      "spaceSaving": "One appliance handles roasting, reheating, and crisping.",
+      "easyToClean": "The removable basket is dishwasher-safe.",
+      "features": [
+        "8-quart capacity",
+        "Digital controls",
+        "10 cooking presets",
+        "Dishwasher-safe basket"
+      ],
+      "relatedProducts": [
+        "high-speed-blender",
+        "coffee-maker"
+      ],
+      "seo": {
+        "title": "Digital Air Fryer | Mino Kitchens",
+        "description": "An 8-quart digital air fryer with practical presets and a dishwasher-safe basket."
+      }
     },
-    "features": [
-      "1200-watt motor",
-      "Glass pitcher",
-      "Five speed settings",
-      "Pulse function"
-    ]
-  }
-]
+    {
+      "id": 2,
+      "handle": "coffee-maker",
+      "name": "Coffee Maker",
+      "price": 119.99,
+      "image": "images/products/coffee-maker.jpg",
+      "collectionHandles": [
+        "cooking-essentials",
+        "space-saving-tools"
+      ],
+      "description": "Prepare up to 12 cups with programmable timing and automatic shutoff.",
+      "problemSolved": "Makes a full morning pot without repeated brewing.",
+      "whyItsPractical": "A programmable timer prepares coffee around your routine.",
+      "spaceSaving": "Its compact footprint suits smaller counters.",
+      "easyToClean": "The reusable filter and carafe rinse clean.",
+      "features": [
+        "12-cup capacity",
+        "Programmable timer",
+        "Automatic shutoff",
+        "Reusable filter"
+      ],
+      "relatedProducts": [
+        "digital-air-fryer",
+        "high-speed-blender"
+      ],
+      "seo": {
+        "title": "Coffee Maker | Mino Kitchens",
+        "description": "A programmable 12-cup coffee maker with automatic shutoff and a reusable filter."
+      }
+    },
+    {
+      "id": 3,
+      "handle": "high-speed-blender",
+      "name": "High-Speed Blender",
+      "price": 74.99,
+      "image": "images/products/blender.jpg",
+      "collectionHandles": [
+        "meal-prep",
+        "space-saving-tools"
+      ],
+      "description": "Blend smoothies, soups, and sauces with a 1200-watt motor and five speed settings.",
+      "problemSolved": "Handles smooth blends without several separate appliances.",
+      "whyItsPractical": "Five speeds cover common preparation tasks.",
+      "spaceSaving": "One pitcher handles drinks, sauces, and soups.",
+      "easyToClean": "The glass pitcher separates for simple rinsing.",
+      "features": [
+        "1200-watt motor",
+        "Glass pitcher",
+        "Five speed settings",
+        "Pulse function"
+      ],
+      "relatedProducts": [
+        "digital-air-fryer",
+        "coffee-maker"
+      ],
+      "seo": {
+        "title": "High-Speed Blender | Mino Kitchens",
+        "description": "A 1200-watt blender with a glass pitcher and five speed settings."
+      }
+    }
+  ]
+}

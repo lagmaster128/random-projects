@@ -8,13 +8,15 @@
       this.innerHTML = `
         <header class="site-header">
           <nav class="navbar" aria-label="Main navigation">
-            <a class="logo" href="index.html" aria-label="Kitchen Shop home">
-              Kitchen Shop
+            <a class="logo" href="index.html" aria-label="Mino Kitchens home">
+              Mino Kitchens
             </a>
 
             <ul class="nav-links">
               ${createNavItem("index.html", "Home", currentPage)}
               ${createNavItem("products.html", "Products", currentPage)}
+              ${createNavItem("about.html", "About", currentPage)}
+              ${createNavItem("contact.html", "Contact", currentPage)}
               <li>
                 <a href="cart.html"${
                   currentPage === "cart.html" ? ' aria-current="page"' : ""
@@ -33,7 +35,7 @@
     connectedCallback() {
       this.innerHTML = `
         <footer>
-          <p>&copy; ${new Date().getFullYear()} Kitchen Shop</p>
+          <p>&copy; ${new Date().getFullYear()} Mino Kitchens</p>
         </footer>
       `;
     }
