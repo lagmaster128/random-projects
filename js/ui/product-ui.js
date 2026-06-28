@@ -3,12 +3,15 @@
 
   function createProductCard(product, options = {}) {
     const { showCategory = true } = options;
+    const productUrl = getProductUrl(product);
     const card = document.createElement("article");
     card.className = "product-card";
+    card.setAttribute("itemscope", "");
+    card.setAttribute("itemtype", "https://schema.org/Product");
 
     card.innerHTML = `
-      <a class="product-image-link" href="product.html?id=${product.id}">
-        <img src="${product.image}" alt="${product.name}">
+      <a class="product-image-link" href="${productUrl}">
+        <img src="${product.image}" alt="${product.name}" itemprop="image">
       </a>
 
       <div class="product-card-content">
@@ -18,9 +21,14 @@
             : ""
         }
         <h3>
-          <a href="product.html?id=${product.id}">${product.name}</a>
+          <a href="${productUrl}" itemprop="url">
+            <span itemprop="name">${product.name}</span>
+          </a>
         </h3>
-        <p class="product-price">$${product.price.toFixed(2)}</p>
+        <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="USD">
+          $<span itemprop="price" content="${product.price.toFixed(2)}">${product.price.toFixed(2)}</span>
+        </p>
         <button class="add-cart" type="button">Add to Cart</button>
       </div>
     `;
@@ -31,16 +39,19 @@
 
   function renderProductDetail(container, product) {
     container.innerHTML = `
-      <div class="product-layout">
+      <article class="product-layout" itemscope itemtype="https://schema.org/Product">
         <div class="product-image">
-          <img src="${product.image}" alt="${product.name}">
+          <img src="${product.image}" alt="${product.name}" itemprop="image">
         </div>
 
         <div class="product-info">
           <p class="product-category">${product.category}</p>
-          <h1>${product.name}</h1>
-          <h2>$${product.price.toFixed(2)}</h2>
-          <p class="description">${product.description}</p>
+          <h1 itemprop="name">${product.name}</h1>
+          <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="USD">
+            <h2>$<span itemprop="price" content="${product.price.toFixed(2)}">${product.price.toFixed(2)}</span></h2>
+          </div>
+          <p class="description" itemprop="description">${product.description}</p>
 
           <div class="features">
             <h3>Key Features</h3>
@@ -51,10 +62,14 @@
 
           <button id="add-cart" type="button">Add to Cart</button>
         </div>
-      </div>
+      </article>
     `;
 
     bindAddButton(container.querySelector("#add-cart"), product);
+  }
+
+  function getProductUrl(product) {
+    return `product.html?handle=${encodeURIComponent(product.handle)}`;
   }
 
   function bindAddButton(button, product) {
@@ -79,6 +94,7 @@
 
   global.ProductUI = Object.freeze({
     createProductCard,
+    getProductUrl,
     renderProductDetail
   });
 })(window);

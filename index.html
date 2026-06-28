@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop practical kitchen appliances for easier everyday cooking.">
 
     <title>Kitchen Shop</title>
 
@@ -11,23 +12,7 @@
 
   <body>
 
-    <header>
-      <nav class="navbar">
-        <div class="logo">
-          Kitchen Shop
-        </div>
-
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li>
-            <a href="cart.html">
-              Cart (<span id="cart-count">0</span>)
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <site-header></site-header>
 
     <main>
 
@@ -48,24 +33,7 @@
       <section id="categories">
         <h2>Shop by Category</h2>
 
-        <div class="category-grid">
-
-          <a class="category-card" href="products.html?category=Air%20Fryers">
-            <h3>Air Fryers</h3>
-            <p>Healthy cooking made simple.</p>
-          </a>
-
-          <a class="category-card" href="products.html?category=Coffee%20Makers">
-            <h3>Coffee Makers</h3>
-            <p>Brew café-quality coffee at home.</p>
-          </a>
-
-          <a class="category-card" href="products.html?category=Blenders">
-            <h3>Blenders</h3>
-            <p>Smoothies, sauces, and more.</p>
-          </a>
-
-        </div>
+        <div id="collection-grid" class="category-grid"></div>
       </section>
 
      <section id="featured-products">
@@ -93,13 +61,11 @@
 
     </main>
 
-    <footer>
-
-      <p>&copy; 2026 Kitchen Shop</p>
-
-    </footer>
+    <site-footer></site-footer>
 
     <script src="js/core/cart.js"></script>
+    <script src="js/data/data-access.js"></script>
+    <script src="js/ui/site-components.js"></script>
     <script src="js/ui/cart-count.js"></script>
     <script src="js/ui/product-ui.js"></script>
     <script src="js/main.js"></script>

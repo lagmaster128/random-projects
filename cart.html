@@ -3,28 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review your Kitchen Shop cart and update item quantities.">
   <title>Shopping Cart</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        Kitchen Shop
-      </div>
-
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li>
-          <a href="cart.html">
-            Cart (<span id="cart-count">0</span>)
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <site-header></site-header>
 
   <main>
     <section class="cart-page">
@@ -40,7 +25,10 @@
     </section>
   </main>
 
+  <site-footer></site-footer>
+
   <script src="js/core/cart.js"></script>
+  <script src="js/ui/site-components.js"></script>
   <script src="js/ui/cart-count.js"></script>
   <script src="js/ui/cart-page.js"></script>
 </body>

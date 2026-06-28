@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse kitchen appliances by collection, search, and price.">
   <title>Products | Kitchen Shop</title>
 
   <link rel="stylesheet" href="css/styles.css">
@@ -10,25 +11,7 @@
 
 <body>
 
-  <header>
-    <nav class="navbar">
-
-      <div class="logo">
-        Kitchen Shop
-      </div>
-
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li>
-          <a href="cart.html">
-             Cart (<span id="cart-count">0</span>)
-          </a>
-        </li>
-      </ul>
-
-    </nav>
-  </header>
+  <site-header></site-header>
 
   <main>
 
@@ -57,20 +40,11 @@
         </label>
       </div>
 
-      <div class="category-filters" aria-label="Filter products by category">
-        <button class="filter-button active" type="button" data-category="all">
-          All
-        </button>
-        <button class="filter-button" type="button" data-category="Air Fryers">
-          Air Fryers
-        </button>
-        <button class="filter-button" type="button" data-category="Coffee Makers">
-          Coffee Makers
-        </button>
-        <button class="filter-button" type="button" data-category="Blenders">
-          Blenders
-        </button>
-      </div>
+      <div
+        id="collection-filters"
+        class="category-filters"
+        aria-label="Filter products by collection"
+      ></div>
 
       <p id="product-count" class="product-count" aria-live="polite"></p>
 
@@ -81,7 +55,11 @@
     </section>
 
   </main>
+  <site-footer></site-footer>
+
   <script src="js/core/cart.js"></script>
+  <script src="js/data/data-access.js"></script>
+  <script src="js/ui/site-components.js"></script>
   <script src="js/ui/cart-count.js"></script>
   <script src="js/ui/product-ui.js"></script>
   <script src="js/products.js"></script>

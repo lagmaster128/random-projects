@@ -1,11 +1,21 @@
 [
   {
     "id": 1,
+    "handle": "digital-air-fryer",
     "name": "Digital Air Fryer",
     "price": 89.99,
     "image": "images/products/air-fryer.jpg",
     "category": "Air Fryers",
+    "collection": {
+      "handle": "air-fryers",
+      "title": "Air Fryers",
+      "description": "Crisp everyday favorites with less oil."
+    },
     "description": "Cook crispy meals with little to no oil using rapid air circulation technology.",
+    "seo": {
+      "title": "Digital Air Fryer | Kitchen Shop",
+      "description": "Shop an 8-quart digital air fryer with ten presets and a dishwasher-safe basket."
+    },
     "features": [
       "8-Quart Capacity",
       "Digital Touchscreen",
@@ -15,11 +25,21 @@
   },
   {
     "id": 2,
+    "handle": "coffee-maker",
     "name": "Coffee Maker",
     "price": 119.99,
     "image": "images/products/coffee-maker.jpg",
     "category": "Coffee Makers",
+    "collection": {
+      "handle": "coffee-makers",
+      "title": "Coffee Makers",
+      "description": "Brew a better morning cup at home."
+    },
     "description": "Brew rich, flavorful coffee every morning with programmable settings.",
+    "seo": {
+      "title": "Programmable Coffee Maker | Kitchen Shop",
+      "description": "Shop a programmable 12-cup coffee maker with auto shutoff and a reusable filter."
+    },
     "features": [
       "12-Cup Capacity",
       "Programmable Timer",
@@ -29,11 +49,21 @@
   },
   {
     "id": 3,
+    "handle": "high-speed-blender",
     "name": "High-Speed Blender",
     "price": 74.99,
     "image": "images/products/blender.jpg",
     "category": "Blenders",
+    "collection": {
+      "handle": "blenders",
+      "title": "Blenders",
+      "description": "Blend smoothies, soups, sauces, and more."
+    },
     "description": "Blend smoothies, soups, and sauces effortlessly with a powerful motor.",
+    "seo": {
+      "title": "High-Speed Blender | Kitchen Shop",
+      "description": "Shop a 1200-watt high-speed blender with a glass pitcher and five speed settings."
+    },
     "features": [
       "1200W Motor",
       "Glass Pitcher",

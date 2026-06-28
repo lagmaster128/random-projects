@@ -1,24 +1,25 @@
 let products = [];
-let activeCategory = "all";
+let collections = [];
+let activeCollection = "all";
 let searchTerm = "";
 let sortMode = "featured";
+let filterButtons = [];
 
 const grid = document.getElementById("product-grid");
 const searchInput = document.getElementById("search");
 const sortSelect = document.getElementById("sort");
 const productCount = document.getElementById("product-count");
-const filterButtons = document.querySelectorAll(".filter-button");
+const filterContainer = document.getElementById("collection-filters");
 
-async function loadProducts() {
+async function loadCatalog() {
   try {
-    const response = await fetch("js/data/products.json");
+    [products, collections] = await Promise.all([
+      StoreData.getProducts(),
+      StoreData.getCollections()
+    ]);
 
-    if (!response.ok) {
-      throw new Error(`Unable to load products (${response.status})`);
-    }
-
-    products = await response.json();
-    setInitialCategory();
+    renderCollectionFilters();
+    setInitialCollection();
     applyCatalogFilters();
   } catch (error) {
     grid.innerHTML = `
@@ -31,12 +32,45 @@ async function loadProducts() {
   }
 }
 
-function setInitialCategory() {
-  const requestedCategory = new URLSearchParams(window.location.search).get("category");
-  const categories = new Set(products.map(product => product.category));
+function renderCollectionFilters() {
+  filterContainer.innerHTML = "";
+  filterContainer.appendChild(createFilterButton("all", "All"));
 
-  if (requestedCategory && categories.has(requestedCategory)) {
-    activeCategory = requestedCategory;
+  collections.forEach(collection => {
+    filterContainer.appendChild(
+      createFilterButton(collection.handle, collection.title)
+    );
+  });
+
+  filterButtons = [...filterContainer.querySelectorAll(".filter-button")];
+}
+
+function createFilterButton(handle, title) {
+  const button = document.createElement("button");
+  button.className = "filter-button";
+  button.type = "button";
+  button.dataset.collection = handle;
+  button.textContent = title;
+
+  button.addEventListener("click", () => {
+    activeCollection = handle;
+    updateActiveFilterButton();
+    applyCatalogFilters();
+  });
+
+  return button;
+}
+
+function setInitialCollection() {
+  const requestedCollection = new URLSearchParams(window.location.search).get(
+    "collection"
+  );
+
+  if (
+    requestedCollection &&
+    collections.some(collection => collection.handle === requestedCollection)
+  ) {
+    activeCollection = requestedCollection;
   }
 
   updateActiveFilterButton();
@@ -44,11 +78,12 @@ function setInitialCategory() {
 
 function applyCatalogFilters() {
   let visibleProducts = products.filter(product => {
-    const matchesCategory =
-      activeCategory === "all" || product.category === activeCategory;
+    const matchesCollection =
+      activeCollection === "all" ||
+      product.collection.handle === activeCollection;
     const matchesSearch = product.name.toLowerCase().includes(searchTerm);
 
-    return matchesCategory && matchesSearch;
+    return matchesCollection && matchesSearch;
   });
 
   if (sortMode === "price-asc") {
@@ -60,7 +95,6 @@ function applyCatalogFilters() {
 
 function displayProducts(productList) {
   grid.innerHTML = "";
-
   productCount.textContent = `${productList.length} ${
     productList.length === 1 ? "product" : "products"
   }`;
@@ -68,7 +102,7 @@ function displayProducts(productList) {
   if (productList.length === 0) {
     grid.innerHTML = `
       <p class="catalog-message">
-        No products match those filters. Try another search or category.
+        No products match those filters. Try another search or collection.
       </p>
     `;
     return;
@@ -81,7 +115,7 @@ function displayProducts(productList) {
 
 function updateActiveFilterButton() {
   filterButtons.forEach(button => {
-    const isActive = button.dataset.category === activeCategory;
+    const isActive = button.dataset.collection === activeCollection;
     button.classList.toggle("active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
@@ -97,12 +131,4 @@ sortSelect.addEventListener("change", event => {
   applyCatalogFilters();
 });
 
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    activeCategory = button.dataset.category;
-    updateActiveFilterButton();
-    applyCatalogFilters();
-  });
-});
-
-loadProducts();
+loadCatalog();

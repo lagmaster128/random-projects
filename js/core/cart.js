@@ -1,6 +1,9 @@
 (function createCartEngine(global) {
   "use strict";
 
+  // Shopify transition seam: keep this public API and replace the localStorage
+  // implementation with Shopify's Ajax Cart API when the theme migration begins.
+
   const STORAGE_KEY = "cart";
   const subscribers = new Set();
   let items = readStoredItems();

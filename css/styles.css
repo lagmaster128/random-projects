@@ -39,6 +39,7 @@ body {
   font-size: 2rem;
   font-weight: bold;
   color: #1F2937;
+  text-decoration: none;
 }
 
 .nav-links {
@@ -56,6 +57,10 @@ body {
 
 .nav-links a:hover {
   color: #F59E0B;
+}
+
+.nav-links a[aria-current="page"] {
+  color: #D97706;
 }
 
 /* =========================
@@ -566,6 +571,11 @@ footer {
 
 html {
   scroll-behavior: smooth;
+}
+
+site-header,
+site-footer {
+  display: block;
 }
 
 body,
