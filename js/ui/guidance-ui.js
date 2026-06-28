@@ -12,11 +12,12 @@
       const heading = this.getAttribute("heading") || "";
       const copy = this.getAttribute("copy") || "";
       const eyebrow = this.getAttribute("eyebrow") || "";
+      const headingId = this.getAttribute("heading-id") || "";
 
       this.classList.add("section-header");
       this.innerHTML = `
         ${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ""}
-        <h2>${heading}</h2>
+        <h2${headingId ? ` id="${headingId}"` : ""}>${heading}</h2>
         ${copy ? `<p>${copy}</p>` : ""}
       `;
     }

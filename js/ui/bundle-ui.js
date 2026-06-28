@@ -70,7 +70,7 @@
         </header>
 
         <section class="bundle-guidance-grid" aria-label="Bundle guidance">
-          ${createGuidanceBlock("Problem this bundle solves", bundle.problemSolved)}
+          ${createGuidanceBlock("Why this bundle exists", bundle.problemSolved)}
           ${createGuidanceBlock("Who it is for", bundle.idealFor)}
         </section>
 
