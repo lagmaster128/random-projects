@@ -2027,3 +2027,25 @@ body {
     padding: 32px 24px;
   }
 }
+
+/* Keep text legible on charcoal actions, including linked buttons. */
+a.hero-button,
+a.hero-button:visited,
+.product-card button,
+#add-cart,
+.filter-button.active {
+  color: var(--mino-white);
+}
+
+a.hero-button:hover,
+a.hero-button:focus-visible,
+.product-card button:hover,
+.product-card button:focus-visible,
+#add-cart:hover,
+#add-cart:focus-visible,
+.filter-button.active:hover,
+.filter-button.active:focus-visible,
+a.secondary-button:hover,
+a.secondary-button:focus-visible {
+  color: var(--mino-white);
+}
