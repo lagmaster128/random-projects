@@ -72,6 +72,8 @@
       collection: { ...collection },
       collectionHandles: [...collectionHandles],
       features: [...(product.features || [])],
+      philosophy: [...(product.philosophy || [])],
+      philosophyExplanation: product.philosophyExplanation || "Chosen for practical, everyday use.",
       relatedProducts: [...(product.relatedProducts || [])],
       seo: {
         title: `${product.name} | Mino Kitchens`,
@@ -99,6 +101,7 @@
       collection: { ...product.collection },
       collectionHandles: [...product.collectionHandles],
       features: [...product.features],
+      philosophy: [...product.philosophy],
       relatedProducts: [...product.relatedProducts],
       seo: { ...product.seo }
     };

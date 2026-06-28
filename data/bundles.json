@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "handle": "first-apartment-kit",
+    "name": "First Apartment Kit",
+    "description": "Everything needed to start cooking with confidence.",
+    "image": "",
+    "includedProducts": [1, 2, 3],
+    "idealFor": "First apartments and newly equipped kitchens.",
+    "comingSoon": true
+  },
+  {
+    "id": 2,
+    "handle": "everyday-cooking-kit",
+    "name": "Everyday Cooking Kit",
+    "description": "Reliable tools for everyday meals.",
+    "image": "",
+    "includedProducts": [1, 3],
+    "idealFor": "People cooking simple weekday meals at home.",
+    "comingSoon": true
+  },
+  {
+    "id": 3,
+    "handle": "small-kitchen-organization-kit",
+    "name": "Small Kitchen Organization Kit",
+    "description": "Simple storage solutions for limited space.",
+    "image": "",
+    "includedProducts": [2, 3],
+    "idealFor": "Small kitchens with limited cabinet and counter space.",
+    "comingSoon": true
+  }
+]

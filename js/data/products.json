@@ -47,6 +47,8 @@
       "whyItsPractical": "Preset controls keep everyday cooking straightforward.",
       "spaceSaving": "One appliance handles roasting, reheating, and crisping.",
       "easyToClean": "The removable basket is dishwasher-safe.",
+      "philosophy": ["essential", "multipurpose", "spacesaving"],
+      "philosophyExplanation": "It handles several everyday cooking jobs without adding another single-use appliance.",
       "features": [
         "8-quart capacity",
         "Digital controls",
@@ -77,6 +79,8 @@
       "whyItsPractical": "A programmable timer prepares coffee around your routine.",
       "spaceSaving": "Its compact footprint suits smaller counters.",
       "easyToClean": "The reusable filter and carafe rinse clean.",
+      "philosophy": ["essential", "spacesaving"],
+      "philosophyExplanation": "Its compact footprint supports a familiar daily routine without crowding the counter.",
       "features": [
         "12-cup capacity",
         "Programmable timer",
@@ -107,6 +111,8 @@
       "whyItsPractical": "Five speeds cover common preparation tasks.",
       "spaceSaving": "One pitcher handles drinks, sauces, and soups.",
       "easyToClean": "The glass pitcher separates for simple rinsing.",
+      "philosophy": ["multipurpose", "spacesaving"],
+      "philosophyExplanation": "One compact appliance covers drinks, soups, and sauces for regular meal preparation.",
       "features": [
         "1200-watt motor",
         "Glass pitcher",

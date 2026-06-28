@@ -1,19 +1,47 @@
 async function loadStorefront() {
   const productGrid = document.getElementById("product-grid");
-  const collectionGrid = document.getElementById("collection-grid");
+  const bundleGrid = document.getElementById("bundle-grid");
+  const journeyGrid = document.getElementById("journey-grid");
+
+  const journeys = [
+    {
+      title: "Moving into your first apartment",
+      description: "Start with the essentials you'll actually use.",
+      href: "bundle.html?handle=first-apartment-kit"
+    },
+    {
+      title: "Cooking more at home",
+      description: "Practical tools for everyday meals.",
+      href: "bundle.html?handle=everyday-cooking-kit"
+    },
+    {
+      title: "Looking for more storage",
+      description: "Simple organization for smaller kitchens.",
+      href: "bundle.html?handle=small-kitchen-organization-kit"
+    },
+    {
+      title: "Decluttering your kitchen",
+      description: "Products chosen to earn their place.",
+      href: "bundles.html#minimalist-collection"
+    }
+  ];
 
   try {
-    const [products, collections] = await Promise.all([
+    const [products, bundles] = await Promise.all([
       StoreData.getProducts(),
-      StoreData.getCollections()
+      BundleData.getBundles()
     ]);
+
+    journeys.forEach(journey => {
+      journeyGrid.appendChild(BundleUI.createJourneyCard(journey));
+    });
+
+    bundles.slice(0, 3).forEach(bundle => {
+      bundleGrid.appendChild(BundleUI.createBundleCard(bundle));
+    });
 
     products.forEach(product => {
       productGrid.appendChild(ProductUI.createProductCard(product));
-    });
-
-    collections.forEach(collection => {
-      collectionGrid.appendChild(createCollectionCard(collection));
     });
   } catch (error) {
     const message = `
@@ -22,24 +50,10 @@ async function loadStorefront() {
       </p>
     `;
     productGrid.innerHTML = message;
-    collectionGrid.innerHTML = message;
+    bundleGrid.innerHTML = message;
+    journeyGrid.innerHTML = message;
     console.error(error);
   }
-}
-
-function createCollectionCard(collection) {
-  const link = document.createElement("a");
-  link.className = "category-card";
-  link.href = `products.html?collection=${encodeURIComponent(collection.handle)}`;
-
-  const heading = document.createElement("h3");
-  heading.textContent = collection.title;
-
-  const description = document.createElement("p");
-  description.textContent = collection.description;
-
-  link.append(heading, description);
-  return link;
 }
 
 loadStorefront();

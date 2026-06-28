@@ -18,27 +18,32 @@
 
       <section id="hero">
         <div class="hero-content">
-          <h1>Modern kitchen essentials.</h1>
+          <h1>Modern kitchen essentials, thoughtfully chosen.</h1>
 
           <p>
-            Practical products designed for everyday cooking, organization, and small spaces.
+            Practical products and curated bundles designed for everyday kitchens.
           </p>
 
-          <a href="products.html" class="hero-button">
-            Browse Products
-          </a>
+          <div class="hero-actions">
+            <a href="bundles.html" class="hero-button">Browse Bundles</a>
+            <a href="products.html" class="secondary-button">Shop Individual Products</a>
+          </div>
         </div>
       </section>
 
-      <section id="categories">
-        <h2>Shop by Category</h2>
+      <section id="kitchen-journey">
+        <h2>Where are you in your kitchen journey?</h2>
+        <div id="journey-grid" class="journey-grid"></div>
+      </section>
 
-        <div id="collection-grid" class="category-grid"></div>
+      <section id="featured-bundles">
+        <h2>Featured Bundles</h2>
+        <div id="bundle-grid" class="bundle-grid"></div>
       </section>
 
      <section id="featured-products">
 
-  <h2>Featured Products</h2>
+  <h2>Featured Individual Products</h2>
 
   <div id="product-grid" class="product-grid">
 
@@ -65,9 +70,11 @@
 
     <script src="js/core/cart.js"></script>
     <script src="js/data/data-access.js"></script>
+    <script src="js/data/bundle-access.js"></script>
     <script src="js/ui/site-components.js"></script>
     <script src="js/ui/cart-count.js"></script>
     <script src="js/ui/product-ui.js"></script>
+    <script src="js/ui/bundle-ui.js"></script>
     <script src="js/main.js"></script>
 
   </body>

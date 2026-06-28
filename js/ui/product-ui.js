@@ -51,6 +51,14 @@
           </div>
         </div>
 
+        <section class="product-philosophy" aria-labelledby="product-philosophy-heading">
+          <h2 id="product-philosophy-heading">Why we chose this product</h2>
+          <div class="philosophy-badges">
+            ${product.philosophy.map(createPhilosophyBadge).join("")}
+          </div>
+          <p>${product.philosophyExplanation}</p>
+        </section>
+
         <section class="product-benefits" aria-labelledby="product-benefits-heading">
           <h2 id="product-benefits-heading">Why you'll like it</h2>
           <div class="benefit-grid">
@@ -103,6 +111,16 @@
         <p>${copy}</p>
       </article>
     `;
+  }
+
+  function createPhilosophyBadge(value) {
+    const labels = {
+      essential: "Essential",
+      multipurpose: "Multi-purpose",
+      spacesaving: "Space-saving"
+    };
+
+    return `<span class="philosophy-badge">${labels[value] || value}</span>`;
   }
 
   function getProductUrl(product) {
