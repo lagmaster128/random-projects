@@ -58,7 +58,7 @@ img {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-secondary);
+  outline: var(--focus-ring-width) solid var(--color-secondary);
   outline-offset: var(--space-3xs);
 }
 

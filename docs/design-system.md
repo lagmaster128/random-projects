@@ -106,15 +106,21 @@ Prefer these classes over page-specific section padding and background rules.
 | `.container-narrow` / `--content-width` | Reading and header width, 720px maximum |
 | `.container-wide` / `--container-wide` | Wide editorial or merchandising layouts, 1280px maximum |
 
-All containers include responsive side gutters. Avoid adding repeated `max-width` declarations when one of these widths fits.
+Supporting semantic widths (`--reading-width`, `--article-width`, `--feature-width`,
+`--content-width-lg`, and `--catalog-width`) cover readable copy and established
+catalog layouts. Card and control caps use `--card-width`, `--card-width-wide`,
+and `--control-width`. All containers include responsive side gutters. Avoid
+adding literal or repeated `max-width` declarations when one of these roles fits.
 
 ## Radius, shadow, and motion
 
 - Cards use `--card-radius` (10px).
 - Buttons and form controls use `--button-radius` (6px).
+- Standard borders use `--border-width`; stronger and accent borders use the documented width tokens.
 - Pills use `--radius-pill`; circular elements use `--radius-round`.
 - Resting cards use `--shadow-light`; elevated hover states use `--shadow-medium`.
 - Standard interactions use `--transition-normal`; very small feedback may use `--transition-fast`.
+- Hover movement uses the `--motion-lift-*` scale rather than component-specific translation values.
 - Reduced-motion users receive effectively immediate transitions through `responsive.css`.
 
 ## Utilities
@@ -131,4 +137,3 @@ Utilities are for isolated composition adjustments. If the same combination appe
 4. Keep page-specific geometry in `styles.css` and shared breakpoints in `responsive.css`.
 5. Preserve visible keyboard focus, useful labels, and reduced-motion behavior.
 6. When adding a token, document its role here; do not add a token merely to disguise a one-off literal.
-

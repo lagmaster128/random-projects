@@ -68,6 +68,17 @@
   --container-width: 1180px;
   --content-width: 720px;
   --container-wide: 1280px;
+  --content-width-sm: 560px;
+  --reading-width: 680px;
+  --article-width: 760px;
+  --feature-width: 820px;
+  --content-width-lg: 900px;
+  --catalog-width: 960px;
+  --card-width: 360px;
+  --card-width-wide: 420px;
+  --control-width: 500px;
+  --control-height: 44px;
+  --field-height: 52px;
   --card-radius: 10px;
   --button-radius: 6px;
   --radius-sm: 4px;
@@ -77,6 +88,8 @@
   --radius-pill: 999px;
   --radius-round: 50%;
   --border-width: 1px;
+  --border-width-strong: 2px;
+  --focus-ring-width: 3px;
   --border-accent-width: 4px;
 
   /* Elevation and motion */
@@ -86,4 +99,8 @@
   --shadow-focus: 0 0 0 3px var(--color-secondary-focus);
   --transition-fast: 120ms ease;
   --transition-normal: 180ms ease;
+  --motion-lift-xs: -1px;
+  --motion-lift-sm: -2px;
+  --motion-lift-md: -3px;
+  --motion-lift-lg: -8px;
 }
