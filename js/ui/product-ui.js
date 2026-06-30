@@ -15,6 +15,7 @@
       </a>
 
       <div class="product-card-content">
+        <div class="product-card-badges" aria-label="Product philosophy"></div>
         <h3>
           <a href="${productUrl}" itemprop="url">
             <span itemprop="name">${safeProduct.name}</span>
@@ -27,6 +28,22 @@
         <button class="add-cart" type="button">Add to Cart</button>
       </div>
     `;
+
+    const badgeGroup = card.querySelector(".product-card-badges");
+    MinoValidator.safeArray(product?.philosophy).slice(0, 3).forEach(value => {
+      const badge = global.GuidanceUI.createBadge(value);
+      const labels = {
+        essential: "Essential",
+        multipurpose: "Multi-purpose",
+        spacesaving: "Space-saving"
+      };
+      badge.textContent = labels[value] || MinoValidator.safeText(value);
+      badgeGroup.appendChild(badge);
+    });
+
+    if (!badgeGroup.hasChildNodes()) {
+      badgeGroup.remove();
+    }
 
     bindAddButton(card.querySelector(".add-cart"), product);
     setupImageFallback(card);

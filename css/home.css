@@ -146,6 +146,9 @@ main > .section .section-header > p:not(.eyebrow) {
 
 #product-grid .product-price {
   margin-top: auto;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
 }
 
 #bundle-grid .bundle-card .secondary-button,
@@ -188,7 +191,7 @@ main > .section .section-header > p:not(.eyebrow) {
   #journey-grid .journey-card:hover,
   #bundle-grid .bundle-card:hover,
   #product-grid .product-card:hover {
-    border-color: var(--color-secondary);
+    border-color: var(--color-border-strong);
     box-shadow: var(--shadow-medium);
     transform: translateY(var(--motion-lift-sm));
   }

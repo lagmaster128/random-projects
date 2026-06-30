@@ -1,0 +1,299 @@
+/* Launch polish: a restrained final layer shared by every existing page. */
+html {
+  background: var(--color-background);
+}
+
+body {
+  color: var(--color-text);
+}
+
+main {
+  overflow: clip;
+}
+
+.page-header {
+  margin-bottom: var(--space-3xl);
+}
+
+.page-header .eyebrow,
+.section-header .eyebrow {
+  margin-bottom: var(--space-xs);
+}
+
+.page-header > p:not(.eyebrow),
+.section-header > p:not(.eyebrow) {
+  line-height: 1.75;
+}
+
+.products-page,
+.bundles-page,
+.guides-page,
+.about-page,
+.guide-detail,
+.bundle-detail-page {
+  padding-top: var(--space-5xl);
+  padding-bottom: var(--space-page-end);
+}
+
+.product-grid,
+.bundle-grid,
+.guide-grid {
+  align-items: stretch;
+  gap: var(--space-lg);
+}
+
+.bundle-card,
+.guide-card,
+.journey-card,
+.brand-principle-card {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-light);
+}
+
+.bundle-card-content,
+.guide-card,
+.journey-card,
+.brand-principle-card {
+  padding: var(--space-lg);
+}
+
+.bundle-card h2,
+.bundle-card h3,
+.guide-card h2,
+.guide-card h3 {
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+.bundle-card p,
+.guide-card p,
+.journey-card p,
+.brand-principle-card p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.button,
+.hero-button,
+.secondary-button,
+.filter-button,
+.product-card button,
+#add-cart {
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+.content-page,
+.contact-card,
+.cart-summary,
+.cart-item,
+.empty-cart {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-light);
+}
+
+.contact-card {
+  padding: var(--space-2xl);
+}
+
+.contact-card h1 {
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.035em;
+}
+
+.catalog-controls {
+  margin-bottom: var(--space-lg);
+}
+
+.product-count,
+.bundle-browse-note {
+  color: var(--color-text-muted);
+}
+
+img {
+  background: var(--color-surface);
+}
+
+@media (hover: hover) {
+  .bundle-card:hover,
+  .guide-card:hover,
+  .journey-card:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(var(--motion-lift-sm));
+  }
+
+  .button:hover,
+  .hero-button:hover,
+  .secondary-button:hover {
+    transform: translateY(var(--motion-lift-xs));
+  }
+}
+
+/* A soft page arrival improves perceived finish without delaying interaction. */
+.page-ready main > :first-child {
+  animation: mino-page-arrival 320ms ease-out both;
+}
+
+@keyframes mino-page-arrival {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-2xs));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* One-time brand introduction. */
+.mino-loading body > :not(.site-loader),
+.mino-transitioning body > :not(.site-loader) {
+  visibility: hidden;
+}
+
+.site-loader {
+  position: fixed;
+  z-index: 9999;
+  display: grid;
+  background: var(--color-background);
+  inset: 0;
+  place-items: center;
+}
+
+.site-loader--transition {
+  opacity: 1;
+}
+
+.site-loader__mark {
+  display: grid;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  opacity: 0;
+  text-transform: uppercase;
+  transform: scale(0.975);
+  animation: mino-mark-in 900ms cubic-bezier(0.22, 1, 0.36, 1) 240ms forwards;
+  gap: var(--space-sm);
+  justify-items: center;
+}
+
+.site-loader--intro .site-loader__mark::after {
+  width: 52px;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--color-secondary);
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.6);
+  animation: mino-accent-in 720ms cubic-bezier(0.22, 1, 0.36, 1) 1100ms forwards;
+}
+
+.site-loader--transition .site-loader__mark {
+  animation: none;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.site-loader--transition .site-loader__logo {
+  width: 72px;
+  height: 72px;
+}
+
+.site-loader--transition .site-loader__name {
+  display: none;
+}
+
+.site-loader__logo {
+  width: 108px;
+  height: 108px;
+  background: transparent;
+}
+
+.site-loader.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 520ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-loader.is-entering {
+  opacity: 0;
+  animation: mino-transition-in 520ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes mino-mark-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes mino-accent-in {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes mino-transition-in {
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .products-page,
+  .bundles-page,
+  .guides-page,
+  .about-page,
+  .guide-detail,
+  .bundle-detail-page {
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-5xl);
+  }
+
+  .product-grid,
+  .bundle-grid,
+  .guide-grid {
+    gap: var(--space-xl);
+  }
+
+  .bundle-card-content,
+  .guide-card,
+  .journey-card,
+  .brand-principle-card,
+  .contact-card {
+    padding: var(--space-md);
+  }
+}
+
+@media (max-width: 560px) {
+  .page-header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .products-page,
+  .bundles-page,
+  .guides-page,
+  .about-page,
+  .guide-detail,
+  .bundle-detail-page {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-4xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-ready main > :first-child,
+  .site-loader__mark,
+  .site-loader--intro .site-loader__mark::after,
+  .site-loader.is-entering {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .site-loader.is-leaving {
+    transition-duration: 0.01ms;
+  }
+}

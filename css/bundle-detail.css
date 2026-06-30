@@ -165,6 +165,10 @@
   flex-direction: column;
 }
 
+.bundle-product-card .product-card-badges {
+  margin-bottom: var(--space-sm);
+}
+
 .bundle-product-note {
   margin-bottom: var(--space-md);
   color: var(--color-text-muted);
