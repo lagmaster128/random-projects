@@ -14,7 +14,7 @@
 
           return response.json();
         })
-        .then(guides => guides.map(normalizeGuide))
+        .then(validateGuides)
         .catch(error => {
           guideRequest = undefined;
           throw error;
@@ -24,11 +24,50 @@
     return guideRequest;
   }
 
+  function validateGuides(source) {
+    const guides = Array.isArray(source)
+      ? source.map(normalizeGuide)
+      : source;
+    const validation = MinoValidator.validateCollection(
+      guides,
+      MinoValidator.validateGuide,
+      { label: "guide" }
+    );
+
+    MinoValidator.report("Guides", validation);
+    return validation.items.filter(guide => guide.status === "published");
+  }
+
   function normalizeGuide(guide) {
+    const source = guide && typeof guide === "object" ? guide : {};
+    const slug = source.slug || source.handle || MinoValidator.createSlug(source.title);
+    const summary = source.summary || source.description || "";
+
     return {
-      ...guide,
-      sections: (guide.sections || []).map(section => ({ ...section })),
-      seo: { ...guide.seo }
+      ...source,
+      id: source.id || slug,
+      slug,
+      handle: source.handle || slug,
+      summary,
+      description: summary,
+      heroImage: MinoValidator.safeImagePath(source.heroImage),
+      status: source.status || "published",
+      sections: MinoValidator.safeArray(source.sections)
+        .filter(section =>
+          section &&
+          typeof section === "object" &&
+          MinoValidator.safeText(section.heading).trim() &&
+          MinoValidator.safeText(section.body).trim()
+        )
+        .map(section => ({
+          heading: MinoValidator.safeText(section.heading),
+          body: MinoValidator.safeText(section.body)
+        })),
+      seo: {
+        title: `${MinoValidator.safeText(source.title, "Guide")} | Mino Kitchens`,
+        description: summary,
+        ...(source.seo && typeof source.seo === "object" ? source.seo : {})
+      }
     };
   }
 

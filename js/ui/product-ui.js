@@ -2,26 +2,27 @@
   "use strict";
 
   function createProductCard(product) {
-    const productUrl = getProductUrl(product);
+    const safeProduct = prepareProduct(product);
+    const productUrl = getProductUrl(safeProduct);
     const card = document.createElement("article");
     card.className = "product-card";
     card.setAttribute("itemscope", "");
     card.setAttribute("itemtype", "https://schema.org/Product");
 
     card.innerHTML = `
-      <a class="product-image-link" href="${productUrl}" aria-label="View ${product.name}">
-        <img src="${product.image}" alt="${product.name}" itemprop="image">
+      <a class="product-image-link" href="${productUrl}" aria-label="View ${safeProduct.name}">
+        <img src="${safeProduct.image}" alt="${safeProduct.name}" itemprop="image">
       </a>
 
       <div class="product-card-content">
         <h3>
           <a href="${productUrl}" itemprop="url">
-            <span itemprop="name">${product.name}</span>
+            <span itemprop="name">${safeProduct.name}</span>
           </a>
         </h3>
         <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
           <meta itemprop="priceCurrency" content="USD">
-          $<span itemprop="price" content="${product.price.toFixed(2)}">${product.price.toFixed(2)}</span>
+          $<span itemprop="price" content="${safeProduct.formattedPrice}">${safeProduct.formattedPrice}</span>
         </p>
         <button class="add-cart" type="button">Add to Cart</button>
       </div>
@@ -33,21 +34,26 @@
   }
 
   function renderProductDetail(container, product, relatedProducts = []) {
+    const safeProduct = prepareProduct(product);
+    const features = MinoValidator.safeArray(product?.features)
+      .map(feature => `<li>${MinoValidator.escapeHtml(feature)}</li>`)
+      .join("");
+
     container.innerHTML = `
       <article class="product-detail-page" itemscope itemtype="https://schema.org/Product">
         <div class="product-hero">
           <div class="product-image">
-            <img src="${product.image}" alt="${product.name}" itemprop="image">
+            <img src="${safeProduct.image}" alt="${safeProduct.name}" itemprop="image">
           </div>
 
           <div class="product-info">
-            <p class="product-category">${product.category}</p>
-            <h1 itemprop="name">${product.name}</h1>
+            <p class="product-category">${safeProduct.category}</p>
+            <h1 itemprop="name">${safeProduct.name}</h1>
             <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
               <meta itemprop="priceCurrency" content="USD">
-              <h2>$<span itemprop="price" content="${product.price.toFixed(2)}">${product.price.toFixed(2)}</span></h2>
+              <h2>$<span itemprop="price" content="${safeProduct.formattedPrice}">${safeProduct.formattedPrice}</span></h2>
             </div>
-            <p class="description" itemprop="description">${product.description}</p>
+            <p class="description" itemprop="description">${safeProduct.description}</p>
           </div>
         </div>
 
@@ -58,7 +64,7 @@
         <section class="features" aria-labelledby="product-features-heading">
           <h2 id="product-features-heading">Key Features</h2>
           <ul>
-            ${product.features.map(feature => `<li>${feature}</li>`).join("")}
+            ${features}
           </ul>
         </section>
 
@@ -95,7 +101,21 @@
   }
 
   function getProductUrl(product) {
-    return `product.html?handle=${encodeURIComponent(product.handle)}`;
+    return `product.html?handle=${encodeURIComponent(MinoValidator.safeText(product?.handle))}`;
+  }
+
+  function prepareProduct(product) {
+    const source = product && typeof product === "object" ? product : {};
+    const price = MinoValidator.safeNumber(source.price);
+
+    return {
+      ...source,
+      name: MinoValidator.escapeHtml(MinoValidator.safeText(source.name, "Product")),
+      category: MinoValidator.escapeHtml(MinoValidator.safeText(source.category, "Products")),
+      description: MinoValidator.escapeHtml(MinoValidator.safeText(source.description)),
+      image: MinoValidator.escapeHtml(MinoValidator.safeImagePath(source.image)),
+      formattedPrice: price.toFixed(2)
+    };
   }
 
   function bindAddButton(button, product) {
@@ -119,34 +139,13 @@
   }
 
   function setupImageFallback(scope) {
-    scope.querySelectorAll("img").forEach(image => {
-      const showPlaceholder = () => {
-        const wrapper = image.closest(".product-image-link, .product-image");
-
-        if (!wrapper || wrapper.classList.contains("image-placeholder")) {
-          return;
-        }
-
-        wrapper.classList.add("image-placeholder");
-        image.hidden = true;
-
-        if (!wrapper.matches("a")) {
-          wrapper.setAttribute("role", "img");
-          wrapper.setAttribute("aria-label", `${image.alt} image placeholder`);
-        }
-      };
-
-      image.addEventListener("error", showPlaceholder, { once: true });
-
-      if (image.complete && image.naturalWidth === 0) {
-        showPlaceholder();
-      }
-    });
+    MinoValidator.setupImageFallback(scope);
   }
 
   global.ProductUI = Object.freeze({
     createProductCard,
     getProductUrl,
-    renderProductDetail
+    renderProductDetail,
+    setupImageFallback
   });
 })(window);

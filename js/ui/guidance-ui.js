@@ -26,14 +26,17 @@
   function createBadge(value) {
     const badge = document.createElement("span");
     badge.className = "philosophy-badge";
-    badge.textContent = `✓ ${PHILOSOPHY_LABELS[value] || value}`;
+    badge.textContent = `✓ ${PHILOSOPHY_LABELS[value] || MinoValidator.safeText(value)}`;
     return badge;
   }
 
   function createApprovalMark(criteria = ["Mino Approved"]) {
+    const safeCriteria = MinoValidator.safeArray(criteria)
+      .map(value => MinoValidator.safeText(value))
+      .filter(Boolean);
     const mark = document.createElement("div");
     mark.className = "mino-approved";
-    mark.setAttribute("aria-label", criteria.join(", "));
+    mark.setAttribute("aria-label", safeCriteria.join(", "));
 
     const icon = document.createElement("span");
     icon.className = "mino-approved-icon";
@@ -41,7 +44,7 @@
     icon.textContent = "✓";
 
     const text = document.createElement("span");
-    text.textContent = criteria.join(" · ");
+    text.textContent = safeCriteria.join(" · ");
     mark.append(icon, text);
     return mark;
   }
@@ -54,26 +57,27 @@
     const approval = createApprovalMark(["Mino Approved"]);
     const badges = document.createElement("div");
     badges.className = "philosophy-badges";
-    product.philosophy.forEach(value => badges.appendChild(createBadge(value)));
+    MinoValidator.safeArray(product?.philosophy)
+      .forEach(value => badges.appendChild(createBadge(value)));
 
     const explanation = document.createElement("p");
     explanation.className = "philosophy-explanation";
-    explanation.textContent = product.philosophyExplanation;
+    explanation.textContent = MinoValidator.safeText(product?.philosophyExplanation);
 
     const details = document.createElement("dl");
     details.className = "selection-grid";
     [
-      ["Problem it solves", product.problemSolved],
-      ["Why it was chosen", product.whyChosen],
-      ["Space saving", product.spaceSaving],
-      ["Easy to clean", product.easyToClean],
-      ["Best for", product.bestFor]
+      ["Problem it solves", product?.problemSolved],
+      ["Why it was chosen", product?.whyChosen],
+      ["Space saving", product?.spaceSaving],
+      ["Easy to clean", product?.easyToClean],
+      ["Best for", product?.bestFor]
     ].forEach(([label, value]) => {
       const item = document.createElement("div");
       const term = document.createElement("dt");
       const description = document.createElement("dd");
       term.textContent = label;
-      description.textContent = value;
+      description.textContent = MinoValidator.safeText(value, "Details not available.");
       item.append(term, description);
       details.appendChild(item);
     });

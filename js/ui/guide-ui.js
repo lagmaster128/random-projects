@@ -8,11 +8,11 @@
     const heading = document.createElement("h2");
     const link = document.createElement("a");
     link.href = getGuideUrl(guide);
-    link.textContent = guide.title;
+    link.textContent = MinoValidator.safeText(guide?.title, "Guide");
     heading.appendChild(link);
 
     const description = document.createElement("p");
-    description.textContent = guide.description;
+    description.textContent = MinoValidator.safeText(guide?.description);
 
     const direction = document.createElement("a");
     direction.className = "guide-link";
@@ -29,20 +29,23 @@
 
     const header = document.createElement("header");
     header.className = "article-header";
-    header.innerHTML = `
-      <p class="eyebrow">Mino Kitchens guide</p>
-      <h1>${guide.title}</h1>
-      <p>${guide.description}</p>
-    `;
+    const eyebrow = document.createElement("p");
+    eyebrow.className = "eyebrow";
+    eyebrow.textContent = "Mino Kitchens guide";
+    const title = document.createElement("h1");
+    title.textContent = MinoValidator.safeText(guide?.title, "Guide");
+    const summary = document.createElement("p");
+    summary.textContent = MinoValidator.safeText(guide?.description);
+    header.append(eyebrow, title, summary);
 
     const content = document.createElement("div");
     content.className = "article-content";
-    guide.sections.forEach(section => {
+    MinoValidator.safeArray(guide?.sections).forEach(section => {
       const block = document.createElement("section");
       const heading = document.createElement("h2");
       const body = document.createElement("p");
-      heading.textContent = section.heading;
-      body.textContent = section.body;
+      heading.textContent = MinoValidator.safeText(section?.heading);
+      body.textContent = MinoValidator.safeText(section?.body);
       block.append(heading, body);
       content.appendChild(block);
     });
@@ -59,7 +62,7 @@
   }
 
   function getGuideUrl(guide) {
-    return `guide.html?handle=${encodeURIComponent(guide.handle)}`;
+    return `guide.html?handle=${encodeURIComponent(MinoValidator.safeText(guide?.handle))}`;
   }
 
   global.GuideUI = Object.freeze({

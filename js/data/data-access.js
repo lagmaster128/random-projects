@@ -25,22 +25,51 @@
   }
 
   function normalizeCatalog(source) {
-    const sourceProducts = Array.isArray(source) ? source : source.products || [];
-    const sourceCollections = Array.isArray(source.collections)
-      ? source.collections
+    const sourceRecord = source && typeof source === "object" ? source : {};
+    const sourceProducts = Array.isArray(source)
+      ? source
+      : MinoValidator.safeArray(sourceRecord.products);
+
+    if (!Array.isArray(source) && !Array.isArray(sourceRecord.products)) {
+      MinoValidator.report("Products", {
+        errors: ["Product collection must be an array"],
+        warnings: []
+      });
+    }
+    const sourceCollections = Array.isArray(sourceRecord.collections)
+      ? sourceRecord.collections
       : createLegacyCollections(sourceProducts);
-    const collections = sourceCollections.map(collection => ({ ...collection }));
+    const collections = sourceCollections
+      .filter(collection => collection && typeof collection === "object")
+      .map(collection => ({
+        ...collection,
+        handle: MinoValidator.safeText(collection.handle),
+        title: MinoValidator.safeText(collection.title),
+        description: MinoValidator.safeText(collection.description)
+      }))
+      .filter(collection => collection.handle && collection.title);
     const products = sourceProducts.map(product =>
       normalizeProduct(product, collections)
     );
+    const validation = MinoValidator.validateCollection(
+      products,
+      MinoValidator.validateProduct,
+      { label: "product" }
+    );
 
-    return { collections, products };
+    MinoValidator.report("Products", validation);
+
+    return { collections, products: validation.items };
   }
 
   function createLegacyCollections(products) {
     const collections = new Map();
 
     products.forEach(product => {
+      if (!product || typeof product !== "object") {
+        return;
+      }
+
       const title = product.category || product.collection?.title;
       const handle = product.collection?.handle || createHandle(title);
 
@@ -53,34 +82,43 @@
   }
 
   function normalizeProduct(product, collections) {
-    const handle = product.handle || createHandle(product.name);
-    const collectionHandles = product.collectionHandles || [
-      product.collection?.handle || createHandle(product.category)
-    ];
+    const source = product && typeof product === "object" ? product : {};
+    const legacyCollection = source.collection && typeof source.collection === "object"
+      ? source.collection
+      : null;
+    const handle = source.handle || createHandle(source.name);
+    const collectionHandles = Array.isArray(source.collectionHandles)
+      ? source.collectionHandles.filter(Boolean)
+      : [legacyCollection?.handle || createHandle(source.category)].filter(Boolean);
     const collection =
       collections.find(item => item.handle === collectionHandles[0]) ||
-      product.collection || {
+      legacyCollection || {
         handle: collectionHandles[0],
-        title: product.category || "Products",
+        title: source.category || "",
         description: ""
       };
 
     return {
-      ...product,
+      ...source,
       handle,
-      category: collection.title,
+      category: MinoValidator.safeText(collection.title || source.category),
       collection: { ...collection },
       collectionHandles: [...collectionHandles],
-      features: [...(product.features || [])],
-      philosophy: [...(product.philosophy || [])],
-      philosophyExplanation: product.philosophyExplanation || "Chosen for practical, everyday use.",
-      whyChosen: product.whyChosen || product.whyItsPractical || "Chosen for practical, everyday use.",
-      bestFor: product.bestFor || "Everyday kitchen routines.",
-      relatedProducts: [...(product.relatedProducts || [])],
+      features: [...MinoValidator.safeArray(source.features)],
+      philosophy: Array.isArray(source.philosophy)
+        ? [...source.philosophy]
+        : source.philosophy,
+      philosophyExplanation: source.philosophyExplanation || "Chosen for practical, everyday use.",
+      problemSolved: MinoValidator.safeText(source.problemSolved, "Practical everyday use."),
+      whyChosen: source.whyChosen || source.whyItsPractical || "Chosen for practical, everyday use.",
+      spaceSaving: MinoValidator.safeText(source.spaceSaving, "Designed for a considered kitchen setup."),
+      easyToClean: MinoValidator.safeText(source.easyToClean, "Follow the product care instructions."),
+      bestFor: source.bestFor || "Everyday kitchen routines.",
+      relatedProducts: [...MinoValidator.safeArray(source.relatedProducts)],
       seo: {
-        title: `${product.name} | Mino Kitchens`,
-        description: product.description,
-        ...product.seo
+        title: `${MinoValidator.safeText(source.name, "Product")} | Mino Kitchens`,
+        description: MinoValidator.safeText(source.description),
+        ...(source.seo && typeof source.seo === "object" ? source.seo : {})
       }
     };
   }
@@ -129,22 +167,43 @@
   }
 
   async function getProductsByHandles(handles) {
-    const requestedHandles = new Set(handles || []);
+    const requestedValues = MinoValidator.safeArray(handles).filter(Boolean);
+    const requestedHandles = new Set(requestedValues);
     const catalog = await loadCatalog();
-
-    return catalog.products
+    const products = catalog.products
       .filter(product => requestedHandles.has(product.handle))
       .map(cloneProduct);
+    const foundHandles = new Set(products.map(product => product.handle));
+    const missing = requestedValues.filter(handle => !foundHandles.has(handle));
+
+    if (missing.length > 0) {
+      MinoValidator.report("Product references", {
+        errors: [],
+        warnings: missing.map(handle => `Missing product handle: ${handle}`)
+      });
+    }
+
+    return products;
   }
 
   async function getProductsByIds(ids) {
-    const requestedIds = (ids || []).map(String);
+    const requestedIds = MinoValidator.safeArray(ids).map(String);
     const catalog = await loadCatalog();
-
-    return requestedIds
+    const products = requestedIds
       .map(id => catalog.products.find(product => String(product.id) === id))
       .filter(Boolean)
       .map(cloneProduct);
+    const foundIds = new Set(products.map(product => String(product.id)));
+    const missing = requestedIds.filter(id => !foundIds.has(id));
+
+    if (missing.length > 0) {
+      MinoValidator.report("Product references", {
+        errors: [],
+        warnings: missing.map(id => `Missing product reference: ${id}`)
+      });
+    }
+
+    return products;
   }
 
   async function getCollections() {
