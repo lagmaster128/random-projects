@@ -11,7 +11,7 @@
 
     card.innerHTML = `
       <a class="product-image-link" href="${productUrl}" aria-label="View ${safeProduct.name}">
-        <img src="${safeProduct.image}" alt="${safeProduct.name}" itemprop="image">
+        <img src="${safeProduct.image}" alt="${safeProduct.name}" itemprop="image" loading="lazy" decoding="async">
       </a>
 
       <div class="product-card-content">
@@ -43,7 +43,7 @@
       <article class="product-detail-page" itemscope itemtype="https://schema.org/Product">
         <div class="product-hero">
           <div class="product-image">
-            <img src="${safeProduct.image}" alt="${safeProduct.name}" itemprop="image">
+            <img src="${safeProduct.image}" alt="${safeProduct.name}" itemprop="image" decoding="async">
           </div>
 
           <div class="product-info">

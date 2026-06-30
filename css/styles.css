@@ -873,7 +873,7 @@ select:focus-visible {
   }
 }
 
-@media (max-width: var(--content-width-sm)) {
+@media (max-width: 560px) {
   .navbar {
     justify-content: center;
     padding: var(--space-xs) var(--space-sm);
@@ -1302,7 +1302,7 @@ mino-section-header {
   }
 }
 
-@media (max-width: var(--content-width)) {
+@media (max-width: 720px) {
   .bundles-page,
   .guides-page,
   .guide-detail,
@@ -1583,7 +1583,7 @@ mino-mission-callout {
   }
 }
 
-@media (max-width: var(--content-width)) {
+@media (max-width: 720px) {
   .about-page {
     padding: 0 var(--space-sm) var(--space-5xl);
   }
@@ -1781,7 +1781,7 @@ mino-mission-callout {
   opacity: 1;
 }
 
-@media (max-width: var(--content-width)) {
+@media (max-width: 720px) {
   .cart-item {
     grid-template-columns: 1fr auto;
     gap: var(--space-sm);
@@ -2170,7 +2170,7 @@ footer {
   }
 }
 
-@media (max-width: var(--content-width-sm)) {
+@media (max-width: 560px) {
   .navbar {
     padding: var(--space-sm) var(--space-sm);
   }
@@ -2416,7 +2416,7 @@ body {
   text-underline-offset: 4px;
 }
 
-@media (max-width: var(--content-width-lg)) {
+@media (max-width: 900px) {
   .product-hero {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
@@ -2690,7 +2690,7 @@ body {
   font-weight: 500;
 }
 
-@media (max-width: var(--catalog-width)) {
+@media (max-width: 960px) {
   .journey-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2700,7 +2700,7 @@ body {
   }
 }
 
-@media (max-width: var(--reading-width)) {
+@media (max-width: 680px) {
   .hero-actions,
   .placeholder-actions {
     align-items: stretch;
@@ -2781,7 +2781,7 @@ a.secondary-button:focus-visible {
   border-radius: var(--card-radius);
 }
 
-@media (max-width: var(--content-width-sm)) {
+@media (max-width: 560px) {
   .logo {
     gap: var(--space-2xs);
   }
@@ -3125,7 +3125,7 @@ a.secondary-button:focus-visible {
   box-shadow: none;
 }
 
-@media (max-width: var(--content-width-lg)) {
+@media (max-width: 900px) {
   .bundle-detail-hero {
     padding: var(--space-2xl);
   }
@@ -3138,7 +3138,7 @@ a.secondary-button:focus-visible {
   }
 }
 
-@media (max-width: var(--content-width)) {
+@media (max-width: 720px) {
   .products-page,
   .bundles-page,
   .bundle-detail-page,

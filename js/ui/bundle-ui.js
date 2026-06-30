@@ -14,7 +14,7 @@
         class="bundle-image${image ? "" : " image-placeholder"}"
         role="img"
         aria-label="${name}${image ? "" : " image placeholder"}"
-      >${image ? `<img src="${image}" alt="${name}">` : ""}</div>
+      >${image ? `<img src="${image}" alt="${name}" loading="lazy" decoding="async">` : ""}</div>
       <div class="bundle-card-content">
         <h3>${name}</h3>
         <p>${description}</p>
@@ -77,36 +77,46 @@
       <article>
         <header class="bundle-detail-hero">
           <div class="bundle-detail-intro">
-            <p class="eyebrow">Curated solution</p>
+            <p class="eyebrow">A considered kitchen solution</p>
             <h1>${name}</h1>
             <p>${description}</p>
             <div class="bundle-detail-approval"></div>
           </div>
-          <div class="bundle-detail-image${image ? "" : " image-placeholder"}" role="img" aria-label="${name}${image ? "" : " image placeholder"}">${image ? `<img src="${image}" alt="${name}">` : ""}</div>
+          <div class="bundle-detail-image${image ? "" : " image-placeholder"}" role="img" aria-label="${name}${image ? "" : " image placeholder"}">${image ? `<img src="${image}" alt="${name}" decoding="async">` : ""}</div>
         </header>
 
         <section class="bundle-guidance-grid" aria-label="Bundle guidance">
           ${createGuidanceBlock("Why this bundle exists", problemSolved)}
-          ${createGuidanceBlock("Who it is for", idealFor)}
+          ${createGuidanceBlock("Who this is for", idealFor)}
+        </section>
+
+        <section class="bundle-rationale" aria-labelledby="bundle-rationale-heading">
+          <p class="eyebrow">The thinking behind the set</p>
+          <h2 id="bundle-rationale-heading">Why we chose these products</h2>
+          <p>${whyTogether}</p>
+        </section>
+
+        <section class="bundle-cta" aria-labelledby="bundle-cta-heading">
+          <div>
+            <p class="eyebrow">Own less. Cook better.</p>
+            <h2 id="bundle-cta-heading">Review the complete solution.</h2>
+            <p>If these routines match yours, look through the included products and decide what earns a place in your kitchen.</p>
+          </div>
+          <a class="hero-button" href="#included-products">${ctaLabel}</a>
         </section>
 
         <section id="included-products" class="bundle-products-section" aria-labelledby="included-products-heading">
           <mino-section-header
             heading="Included products"
-            copy="A small set selected to cover the core routine."
+            copy="Each item has a clear job within the solution."
           ></mino-section-header>
           <div class="product-grid included-product-grid"></div>
         </section>
 
-        <section class="bundle-rationale" aria-labelledby="bundle-rationale-heading">
-          <h2 id="bundle-rationale-heading">Why these products were chosen together</h2>
-          <p>${whyTogether}</p>
-        </section>
-
         <section class="bundle-products-section optional-products" aria-labelledby="optional-products-heading">
           <mino-section-header
-            heading="You may also like"
-            copy="Optional additions that complete a specific routine."
+            heading="Consider adding"
+            copy="Useful only when this routine is already part of your kitchen."
           ></mino-section-header>
           <div class="product-grid optional-product-grid"></div>
         </section>
@@ -118,23 +128,17 @@
           </div>
         </section>
 
-        <section class="bundle-cta" aria-labelledby="bundle-cta-heading">
-          <p class="eyebrow">Own less. Cook better.</p>
-          <h2 id="bundle-cta-heading">Start with the essentials.</h2>
-          <p>Review the included products and choose only what fits your routine.</p>
-          <a class="hero-button" href="#included-products">${ctaLabel}</a>
-        </section>
       </article>
     `;
 
     container.querySelector(".bundle-detail-approval").appendChild(
-      global.GuidanceUI.createApprovalMark(["Mino Approved", "Essential"])
+      global.GuidanceUI.createApprovalMark(["Mino Approved", "Purposefully paired"])
     );
     MinoValidator.setupImageFallback(container);
 
     const includedGrid = container.querySelector(".included-product-grid");
     safeIncludedProducts.forEach(product => {
-      const card = global.ProductUI.createProductCard(product);
+      const card = createBundleProductCard(product, false);
       if (card) includedGrid.appendChild(card);
     });
 
@@ -144,10 +148,34 @@
     } else {
       const optionalGrid = container.querySelector(".optional-product-grid");
       safeOptionalProducts.slice(0, 4).forEach(product => {
-        const card = global.ProductUI.createProductCard(product);
+        const card = createBundleProductCard(product, true);
         if (card) optionalGrid.appendChild(card);
       });
     }
+  }
+
+  function createBundleProductCard(product, optional) {
+    const card = global.ProductUI.createProductCard(product);
+
+    if (!card) {
+      return null;
+    }
+
+    card.classList.add("bundle-product-card");
+    const content = card.querySelector(".product-card-content");
+    const price = content?.querySelector(".product-price");
+    const note = document.createElement("p");
+    note.className = "bundle-product-note";
+    note.textContent = MinoValidator.safeText(
+      optional ? product?.bestFor : product?.whyChosen,
+      "Chosen for a clear, practical role in this kitchen routine."
+    );
+
+    if (content && price) {
+      content.insertBefore(note, price);
+    }
+
+    return card;
   }
 
   function createGuidanceBlock(heading, copy) {

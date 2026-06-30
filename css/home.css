@@ -1,0 +1,280 @@
+/* Homepage launch polish. Keep this layer scoped to existing homepage sections. */
+
+main > .section {
+  padding-block: var(--space-section);
+}
+
+#hero.section {
+  min-height: 620px;
+  height: 76svh;
+  padding-block: var(--space-5xl);
+}
+
+#hero .hero-content {
+  width: min(100%, var(--article-width));
+  margin-inline: auto;
+}
+
+#hero .hero-content h1 {
+  max-width: var(--article-width);
+  margin-inline: auto;
+  margin-bottom: var(--space-md);
+  text-wrap: balance;
+}
+
+#hero .hero-content p {
+  margin-bottom: var(--space-xl);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+#hero .hero-actions {
+  gap: var(--space-sm);
+}
+
+#hero .hero-actions .button {
+  min-width: 210px;
+  min-height: var(--field-height);
+  padding: var(--space-sm) var(--space-md);
+}
+
+#hero .hero-actions .button--secondary {
+  background: transparent;
+}
+
+main > .section .section-header {
+  margin-bottom: var(--space-3xl);
+}
+
+main > .section .section-header h2 {
+  margin-bottom: var(--space-sm);
+  text-wrap: balance;
+}
+
+main > .section .section-header > p:not(.eyebrow) {
+  max-width: var(--content-width-sm);
+  font-size: var(--font-size-body-lg);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+#journey-grid,
+#bundle-grid,
+#product-grid,
+#why-us .brand-principle-grid {
+  width: min(100%, var(--container-width));
+  margin-inline: auto;
+}
+
+#journey-grid {
+  gap: var(--space-md);
+}
+
+#journey-grid .journey-card {
+  min-height: 220px;
+  height: 100%;
+  padding: var(--space-lg);
+  border-color: var(--color-border);
+  background: var(--color-background);
+  box-shadow: none;
+}
+
+#journey-grid .journey-card h3 {
+  margin-bottom: var(--space-xs);
+  line-height: 1.4;
+}
+
+#journey-grid .journey-card p {
+  line-height: 1.65;
+}
+
+#journey-grid .journey-direction {
+  padding-top: var(--space-md);
+}
+
+#bundle-grid,
+#product-grid {
+  align-items: stretch;
+  gap: var(--space-lg);
+}
+
+#bundle-grid .bundle-card,
+#product-grid .product-card {
+  height: 100%;
+  border-color: var(--color-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+}
+
+#bundle-grid .bundle-image,
+#product-grid .product-image-link {
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+#bundle-grid .bundle-image img,
+#product-grid .product-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: transform var(--transition-normal);
+}
+
+#bundle-grid .bundle-card-content,
+#product-grid .product-card-content {
+  display: flex;
+  padding: var(--space-md);
+  flex: 1;
+  flex-direction: column;
+}
+
+#bundle-grid .bundle-card h3,
+#product-grid .product-card h3 {
+  margin-bottom: var(--space-xs);
+  line-height: 1.4;
+}
+
+#bundle-grid .bundle-card p {
+  line-height: 1.65;
+}
+
+#product-grid .product-price {
+  margin-top: auto;
+}
+
+#bundle-grid .bundle-card .secondary-button,
+#product-grid .product-card .add-cart {
+  min-height: var(--field-height);
+}
+
+#product-grid .product-card {
+  max-width: none;
+  background: var(--color-background);
+}
+
+#product-grid .product-card-content .add-cart {
+  width: 100%;
+  margin-top: 0;
+}
+
+#why-us .brand-principle-grid {
+  gap: var(--space-sm);
+}
+
+#why-us .brand-principle-card {
+  min-height: 160px;
+  padding: var(--space-md);
+  background: var(--color-surface-glass);
+  box-shadow: none;
+}
+
+#why-us .brand-principle-card:hover {
+  border-color: var(--color-border);
+  box-shadow: none;
+  transform: none;
+}
+
+#why-us .brand-principle-icon {
+  margin-bottom: var(--space-md);
+}
+
+@media (hover: hover) {
+  #journey-grid .journey-card:hover,
+  #bundle-grid .bundle-card:hover,
+  #product-grid .product-card:hover {
+    border-color: var(--color-secondary);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(var(--motion-lift-sm));
+  }
+
+  #product-grid .product-card:hover img,
+  #bundle-grid .bundle-card:hover img {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+}
+
+@media (hover: none) {
+  #journey-grid .journey-card:hover,
+  #bundle-grid .bundle-card:hover,
+  #product-grid .product-card:hover {
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-light);
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  #journey-grid,
+  #bundle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #why-us .brand-principle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  main > .section {
+    padding-block: var(--space-4xl);
+  }
+
+  #hero.section {
+    min-height: 0;
+    height: auto;
+    padding-block: var(--space-5xl);
+  }
+
+  #hero .hero-actions {
+    width: min(100%, var(--card-width-wide));
+    margin-inline: auto;
+  }
+
+  #hero .hero-actions .button {
+    width: 100%;
+  }
+
+  main > .section .section-header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  main > .section .section-header > p:not(.eyebrow) {
+    font-size: var(--font-size-md);
+  }
+
+  #journey-grid,
+  #bundle-grid,
+  #product-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  #journey-grid .journey-card {
+    min-height: 190px;
+  }
+}
+
+@media (max-width: 480px) {
+  main > .section {
+    padding-block: var(--space-3xl);
+  }
+
+  #hero.section {
+    padding-block: var(--space-4xl);
+  }
+
+  #why-us .brand-principle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #why-us .brand-principle-card {
+    min-height: 0;
+  }
+}
