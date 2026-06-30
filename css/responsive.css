@@ -1,0 +1,28 @@
+@media (max-width: 700px) {
+  .container,
+  .container-narrow,
+  .container-wide {
+    width: min(100% - (2 * var(--space-sm)), var(--container-width));
+  }
+
+  .section {
+    padding-block: var(--space-4xl);
+  }
+
+  .card__body,
+  .product-card-content,
+  .bundle-card-content {
+    padding: var(--space-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

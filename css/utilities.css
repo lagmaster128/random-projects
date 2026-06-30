@@ -1,0 +1,11 @@
+.text-center { text-align: center !important; }
+.text-muted { color: var(--color-text-muted) !important; }
+.mb-sm { margin-bottom: var(--space-sm) !important; }
+.mb-md { margin-bottom: var(--space-md) !important; }
+.mb-lg { margin-bottom: var(--space-lg) !important; }
+.mt-lg { margin-top: var(--space-lg) !important; }
+.flex-center { display: flex !important; align-items: center; justify-content: center; }
+.hidden { display: none !important; }
+.rounded { border-radius: var(--card-radius) !important; }
+.shadow-light { box-shadow: var(--shadow-light) !important; }
+
