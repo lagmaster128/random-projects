@@ -32,7 +32,16 @@ Individual validators return:
   collectionHandles: string[],
   philosophy: ("essential" | "multipurpose" | "spacesaving")[],
   features: string[],
-  relatedProducts: string[]
+  relatedProducts: string[],
+  bundleHandles: string[],
+  worksWellInBundleHandles: string[],
+  minoReview: {
+    score: number,
+    approved: boolean,
+    positives: string[],
+    complaints: string[],
+    rationale: string
+  }
 }
 ```
 
@@ -47,6 +56,24 @@ Required fields:
 - `philosophy`: array containing only supported values
 
 Optional fields include `features`, `relatedProducts`, `philosophyExplanation`, `problemSolved`, `whyChosen`, `spaceSaving`, `easyToClean`, `bestFor`, and `seo`. Optional arrays normalize to empty arrays. Missing explanatory copy uses neutral text fallbacks and never renders `undefined` or `null`.
+
+### Optional Mino evaluation
+
+`minoReview` stores Mino's editorial evaluation, not customer-generated ratings. Every field is optional. The review component renders only populated fields and disappears entirely when the object is absent or empty.
+
+- `score`: number from 0 to 100
+- `approved`: explicit Mino approval status
+- `positives`: the strongest practical attributes
+- `complaints`: common limitations or buying considerations
+- `rationale`: concise internal buying rationale suitable for customers
+
+Do not publish unverified scores or claims. Benchmark products can omit this object until evaluation is complete.
+
+### Product-to-bundle relationships
+
+Products may explicitly declare bundle relationships with `bundleHandles` (included in) and `worksWellInBundleHandles` (optional fit). `BundleData.getProductBundleRelationships()` also derives the same relationships from existing bundle `includedProducts` and `optionalAdditions` metadata. Explicit handles make future Shopify metafield mapping straightforward; reverse lookup keeps the current catalog working without duplicated data.
+
+Unknown bundle handles produce developer warnings and are not rendered. Products with no valid relationships show no empty section.
 
 An invalid product is never returned by `StoreData` and therefore cannot be rendered or added to a bundle display.
 
@@ -90,12 +117,18 @@ Relationship rules:
 ```js
 {
   id: string | number,
+  type: "guide" | "playbook",
   title: string,
   slug: string,
   summary: string,
   heroImage: string,
   status: "draft" | "published" | "archived",
   sections: { heading: string, body: string }[],
+  mealsEnabled: string[],
+  essentialTools: { name: string, reason: string }[],
+  optionalTools: { name: string, reason: string }[],
+  supportingBundle: { handle: string, name: string, rationale: string },
+  takeaway: string,
   seo: { title: string, description: string }
 }
 ```
@@ -110,11 +143,27 @@ Required fields:
 
 Optional fields:
 
+- `type`: defaults to `guide`; use `playbook` for Kitchen Playbooks
 - `heroImage`: missing or unsafe values warn and use a placeholder when rendered
-- `sections`: missing content warns; incomplete sections are omitted
+- `sections`: standard guide content; incomplete sections are omitted
+- `mealsEnabled`: Playbook-only list of representative meals the setup supports
+- `essentialTools`: Playbook-only tools that define the capability
+- `optionalTools`: Playbook-only upgrades that are useful but not required
+- `supportingBundle`: Playbook-only link to the most relevant Mino bundle
+- `takeaway`: Playbook-only summary that reinforces intentional purchasing
 - `seo`: safe defaults are generated from the title and summary
 
 Only `published` guides are exposed to public rendering.
+
+### Kitchen Playbook rules
+
+Kitchen Playbooks are educational buying guides organized around kitchen capability, not individual recipes. They should:
+
+- explain what broad meals the setup enables;
+- identify the smallest useful set of essential tools;
+- separate optional convenience upgrades from beginner needs;
+- recommend one relevant Mino bundle naturally, without promotional pressure;
+- avoid ingredient lists, step-by-step recipes, or cooking-blog content.
 
 ### Legacy guide compatibility
 
@@ -157,3 +206,13 @@ File existence is checked by the browser when the image loads. This works for lo
 Rendering code receives data only through `StoreData`, `BundleData`, or `GuideData`. UI components still use defensive helpers for text, numbers, arrays, URLs, and images so unexpected direct calls cannot output `undefined`, `null`, or `NaN`.
 
 Do not fetch JSON directly from a UI component. Provider-specific normalization belongs in a data adapter; schema validation belongs in `validator.js`; DOM construction belongs in the UI layer.
+
+## FAQ schema
+
+FAQ content lives in `data/faqs.json`. Add, remove, or reorder entries there without changing the page layout.
+
+| Field | Required | Purpose |
+| --- | --- | --- |
+| `id` | Yes | Stable, unique identifier used for accessible answer regions |
+| `question` | Yes | Customer-facing accordion label |
+| `answer` | Yes | A plain-text answer or an array of paragraphs shown when the item opens |

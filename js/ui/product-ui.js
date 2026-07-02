@@ -23,9 +23,10 @@
         </h3>
         <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
           <meta itemprop="priceCurrency" content="USD">
+          <link itemprop="url" href="${productUrl}">
           $<span itemprop="price" content="${safeProduct.formattedPrice}">${safeProduct.formattedPrice}</span>
         </p>
-        <button class="add-cart" type="button">Add to Cart</button>
+        <button class="add-cart" type="button">Add to cart</button>
       </div>
     `;
 
@@ -50,7 +51,12 @@
     return card;
   }
 
-  function renderProductDetail(container, product, relatedProducts = []) {
+  function renderProductDetail(
+    container,
+    product,
+    relatedProducts = [],
+    bundleRelationships = []
+  ) {
     const safeProduct = prepareProduct(product);
     const features = MinoValidator.safeArray(product?.features)
       .map(feature => `<li>${MinoValidator.escapeHtml(feature)}</li>`)
@@ -64,7 +70,7 @@
           </div>
 
           <div class="product-info">
-            <p class="product-category">${safeProduct.category}</p>
+            <p class="product-category">One tool, one clear role</p>
             <h1 itemprop="name">${safeProduct.name}</h1>
             <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
               <meta itemprop="priceCurrency" content="USD">
@@ -74,23 +80,25 @@
           </div>
         </div>
 
+        <mino-catalog-note></mino-catalog-note>
+
         <section class="product-selection" aria-labelledby="product-selection-heading">
           <div class="product-selection-content"></div>
         </section>
 
         <section class="features" aria-labelledby="product-features-heading">
-          <h2 id="product-features-heading">Key Features</h2>
+          <h2 id="product-features-heading">The useful details</h2>
           <ul>
             ${features}
           </ul>
         </section>
 
         <div class="product-purchase">
-          <button id="add-cart" type="button">Add to Cart</button>
+          <button id="add-cart" type="button">Add to cart</button>
         </div>
 
         <section class="related-products" aria-labelledby="related-products-heading">
-          <h2 id="related-products-heading">Related Products</h2>
+          <h2 id="related-products-heading">Only add more if it solves something</h2>
           <div class="product-grid related-product-grid"></div>
         </section>
       </article>
@@ -103,11 +111,22 @@
       product
     );
 
+    const selectionSection = container.querySelector(".product-selection");
+    const review = global.CurationUI?.createMinoReview(product);
+    const relationships = global.CurationUI?.createBundleRelationships(
+      bundleRelationships
+    );
+
+    if (review) selectionSection.insertAdjacentElement("afterend", review);
+    if (relationships) {
+      (review || selectionSection).insertAdjacentElement("afterend", relationships);
+    }
+
     const relatedGrid = container.querySelector(".related-product-grid");
 
     if (relatedProducts.length === 0) {
       relatedGrid.innerHTML = `
-        <p class="catalog-message">Related products will appear here.</p>
+        <p class="catalog-message">This may be all you need for the job.</p>
       `;
       return;
     }

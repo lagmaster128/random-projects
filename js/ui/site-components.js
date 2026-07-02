@@ -8,6 +8,7 @@
       ensureFavicon();
 
       this.innerHTML = `
+        <a class="skip-link" href="#main-content">Skip to main content</a>
         <header class="site-header">
           <nav class="navbar" aria-label="Main navigation">
             <a class="logo" href="index.html" aria-label="Mino Kitchens home">
@@ -15,11 +16,22 @@
               <span>Mino Kitchens</span>
             </a>
 
-            <ul class="nav-links">
+            <button
+              class="nav-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="primary-navigation"
+            >
+              <span>Menu</span>
+              <span class="nav-toggle__icon" aria-hidden="true"></span>
+            </button>
+
+            <ul id="primary-navigation" class="nav-links">
               ${createNavItem("index.html", "Home", currentPage)}
               ${createNavItem("bundles.html", "Bundles", currentPage)}
               ${createNavItem("products.html", "Products", currentPage)}
               ${createNavItem("guides.html", "Guides", currentPage)}
+              ${createNavItem("faq.html", "FAQ", currentPage)}
               ${createNavItem("about.html", "About", currentPage)}
               ${createNavItem("contact.html", "Contact", currentPage)}
               <li>
@@ -33,6 +45,49 @@
           </nav>
         </header>
       `;
+
+      const toggle = this.querySelector(".nav-toggle");
+      const navigation = this.querySelector(".nav-links");
+
+      toggle.addEventListener("click", () => {
+        const isOpen = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!isOpen));
+        navigation.classList.toggle("is-open", !isOpen);
+      });
+
+      const desktopNavigation = global.matchMedia("(min-width: 901px)");
+      const resetMobileNavigation = event => {
+        if (!event.matches) return;
+        navigation.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      };
+
+      desktopNavigation.addEventListener("change", resetMobileNavigation);
+
+      this.addEventListener("keydown", event => {
+        if (event.key !== "Escape" || !navigation.classList.contains("is-open")) {
+          return;
+        }
+
+        navigation.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      });
+
+      const assignMainTarget = () => {
+        const main = document.querySelector("main");
+        const skipLink = this.querySelector(".skip-link");
+
+        if (!main || !skipLink) return;
+        if (!main.id) main.id = "main-content";
+        skipLink.href = `#${main.id}`;
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", assignMainTarget, { once: true });
+      } else {
+        assignMainTarget();
+      }
     }
   }
 
@@ -40,9 +95,38 @@
     connectedCallback() {
       this.innerHTML = `
         <footer>
-          <img class="footer-logo" src="images/brand/mino-kitchens-logo.svg" alt="Mino Kitchens">
-          <p>&copy; ${new Date().getFullYear()} Mino Kitchens</p>
+          <div class="footer-inner">
+            <div class="footer-brand">
+              <img class="footer-logo" src="images/brand/mino-kitchens-logo.svg" alt="">
+              <p class="footer-name">Mino Kitchens</p>
+              <p>Fewer, better choices for building your first functional kitchen.</p>
+            </div>
+            <nav class="footer-navigation" aria-label="Footer navigation">
+              <a href="bundles.html">Bundles</a>
+              <a href="products.html">Essentials</a>
+              <a href="guides.html">Guides</a>
+              <a href="faq.html">FAQ</a>
+              <a href="contact.html">Contact</a>
+            </nav>
+            <p class="footer-legal">&copy; ${new Date().getFullYear()} Mino Kitchens. Spend less. Cook more.</p>
+          </div>
         </footer>
+      `;
+    }
+  }
+
+  class MinoCatalogNote extends HTMLElement {
+    connectedCallback() {
+      const isGuide = this.getAttribute("context") === "guide";
+      const message = isGuide
+        ? "Some guides mention appliances or ingredients to explain what a kitchen setup can do. They're useful context, but they aren't products in our catalog."
+        : "Mino Kitchens focuses on cookware, organization, and useful everyday kitchen tools. Countertop appliances, electronics, and food ingredients aren't part of our current catalog.";
+
+      this.innerHTML = `
+        <aside class="catalog-note" aria-label="Catalog information">
+          <strong>A quick note</strong>
+          <p>${message}</p>
+        </aside>
       `;
     }
   }
@@ -75,5 +159,9 @@
 
   if (!customElements.get("site-footer")) {
     customElements.define("site-footer", SiteFooter);
+  }
+
+  if (!customElements.get("mino-catalog-note")) {
+    customElements.define("mino-catalog-note", MinoCatalogNote);
   }
 })(window);

@@ -27,6 +27,13 @@
       "content",
       bundle.problemSolved
     );
+    document.querySelector('link[rel="canonical"]').setAttribute(
+      "href",
+      new URL(
+        `bundle.html?handle=${encodeURIComponent(bundle.handle)}`,
+        window.location.href
+      ).href
+    );
     BundleUI.renderBundleDetail(
       container,
       bundle,

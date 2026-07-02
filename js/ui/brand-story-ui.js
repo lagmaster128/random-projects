@@ -1,7 +1,7 @@
 (function registerBrandStoryUI(global) {
   "use strict";
 
-  const MISSION = "To help people create cleaner, more functional kitchens through thoughtfully curated essentials that reduce clutter, simplify everyday cooking, and make every product earn its place.";
+  const MISSION = "We help people build a kitchen that works without buying everything at once. Fewer tools, less clutter, and a clear reason for every choice.";
   const PRINCIPLES = [
     "Solve a real problem",
     "Save space",
@@ -10,10 +10,10 @@
     "Last"
   ];
   const HOMEPAGE_PRINCIPLES = [
-    "Thoughtfully curated.",
-    "Built for everyday kitchens.",
-    "Less clutter.",
-    "Better cooking."
+    "It solves a problem you'll really have.",
+    "You'll reach for it more than once.",
+    "It makes sense in a smaller kitchen.",
+    "You can understand why it's here."
   ];
 
   class MinoMissionBlock extends HTMLElement {
@@ -68,7 +68,7 @@
 
   class MinoCtaBanner extends HTMLElement {
     connectedCallback() {
-      const heading = this.getAttribute("heading") || "Own less. Cook better.";
+      const heading = this.getAttribute("heading") || "Spend less. Cook more.";
       const copy = this.getAttribute("copy") || "";
       const href = this.getAttribute("href") || "bundles.html";
       const label = this.getAttribute("label") || "Browse Bundles";

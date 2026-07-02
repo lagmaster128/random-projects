@@ -26,7 +26,7 @@
   function createCartItem(item) {
     const article = document.createElement("article");
     article.className = "cart-item";
-    article.dataset.id = item.id;
+    article.dataset.id = global.Cart.getItemIdentity(item);
 
     const details = document.createElement("div");
     details.className = "cart-item-details";
@@ -85,12 +85,12 @@
     heading.textContent = "Your cart is empty";
 
     const copy = document.createElement("p");
-    copy.textContent = "Browse the collection and add something useful to your kitchen.";
+    copy.textContent = "Start with a bundle built around your routine, then add individual essentials only when needed.";
 
     const link = document.createElement("a");
     link.className = "hero-button";
-    link.href = "products.html";
-    link.textContent = "Shop Products";
+    link.href = "bundles.html";
+    link.textContent = "Browse kitchen bundles";
 
     emptyState.append(heading, copy, link);
     container.appendChild(emptyState);

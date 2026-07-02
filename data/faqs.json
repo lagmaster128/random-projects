@@ -1,0 +1,49 @@
+[
+  {
+    "id": "why-shop-with-mino",
+    "question": "Why shop with Mino Kitchens instead of a large marketplace like Amazon?",
+    "answer": [
+      "Amazon is great when you already know exactly what you're looking for.",
+      "Mino Kitchens is built for the moments before that.",
+      "If you're setting up your first kitchen, it can be difficult to know which tools are actually essential, which products are worth buying, or how everything fits together. Large marketplaces offer thousands of options—but more choices don't always make the decision easier.",
+      "Mino takes a different approach. We intentionally keep our catalog small, carefully curate every product, and organize our recommendations around complete kitchen solutions instead of endless listings. Our guides and bundles are designed to help you build a functional kitchen with confidence, without spending hours comparing nearly identical products.",
+      "Our goal isn't to sell you more—it's to help you buy what you'll actually use."
+    ]
+  },
+  {
+    "id": "how-products-are-chosen",
+    "question": "How do you choose which products to sell?",
+    "answer": [
+      "Every product we consider has to earn its place.",
+      "We look for items that solve a real problem, fit well in smaller kitchens, are easy to use and clean, and provide long-term value. If a product feels unnecessary, overly specialized, or doesn't align with our philosophy of fewer, better essentials, it doesn't make the cut.",
+      "We're continually reviewing and improving our catalog so every recommendation reflects the standards we expect for our own kitchens."
+    ]
+  },
+  {
+    "id": "why-focus-on-bundles",
+    "question": "Why do you focus on bundles?",
+    "answer": [
+      "Most people don't need one more kitchen gadget—they need a kitchen that works.",
+      "Our bundles are designed around real situations, like moving into a first apartment or organizing a small kitchen. Instead of asking you to figure out which products belong together, we've already done the planning.",
+      "You can still shop for individual products, but bundles are often the simplest way to build a functional kitchen with confidence."
+    ]
+  },
+  {
+    "id": "appliances-or-food",
+    "question": "Do you sell appliances or food?",
+    "answer": [
+      "No. Mino Kitchens currently focuses on cookware, kitchen tools, organization products, dining essentials, and accessories.",
+      "Some of our guides may mention ingredients or appliances to help explain how different meals or kitchen setups work, but we don't currently sell food items or countertop electronics.",
+      "By keeping our catalog focused, we can spend more time choosing products that genuinely help people build practical, organized kitchens."
+    ]
+  },
+  {
+    "id": "first-kitchen-start",
+    "question": "I'm setting up my first kitchen. Where should I start?",
+    "answer": [
+      "You're exactly who we built Mino Kitchens for.",
+      "If you're not sure what you need, start with one of our bundles or Kitchen Playbooks. They're designed to help you understand which tools are essential, which ones can wait, and how a small collection of thoughtfully chosen items can prepare you for everyday cooking.",
+      "Building your first kitchen doesn't have to be overwhelming. Our goal is to help you buy with confidence, avoid unnecessary clutter, and create a kitchen that grows with you."
+    ]
+  }
+]

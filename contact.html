@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact Mino Kitchens about products or orders.">
+  <meta name="description" content="Contact Mino Kitchens for straightforward help choosing a bundle, filling a kitchen gap, or understanding an order.">
   <title>Contact | Mino Kitchens</title>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
@@ -18,19 +18,31 @@
 <body>
   <site-header></site-header>
 
-  <main class="contact-page section section-light">
-    <article class="content-page contact-card card container-narrow">
-      <p class="eyebrow">Contact</p>
-      <h1>How can we help?</h1>
-      <p>
-        For product or order questions, email
-        <a href="mailto:hello@minokitchens.com">hello@minokitchens.com</a>.
-      </p>
-      <p>We aim to keep every answer clear and useful.</p>
+  <main class="contact-page">
+    <article class="contact-card container-narrow">
+      <header class="contact-header">
+        <p class="eyebrow">Contact</p>
+        <h1>Need help choosing?</h1>
+        <p>Tell us what you're building, what you already own, and where you're stuck. We'll help you find a sensible next step.</p>
+        <a class="button button--primary" href="mailto:gohagler42@gmail.com">Email Mino Kitchens</a>
+        <p class="contact-email">gohagler42@gmail.com</p>
+      </header>
+
+      <div class="contact-guidance">
+        <article aria-labelledby="choosing-help-heading">
+          <h2 id="choosing-help-heading">Choosing help</h2>
+          <p>Share what you cook, how much space you have, and what you already own. We'll help you narrow it down.</p>
+          <a class="text-button" href="guides.html">Explore the choosing guides</a>
+        </article>
+
+        <article aria-labelledby="order-help-heading">
+          <h2 id="order-help-heading">Order support</h2>
+          <p>Include your order number when asking about delivery, a return, or an item that arrived damaged or incorrect.</p>
+          <p>Shipping costs, delivery estimates, and return eligibility are shown before an order is placed.</p>
+        </article>
+      </div>
     </article>
   </main>
-
-  <mino-mission-callout></mino-mission-callout>
 
   <site-footer></site-footer>
 
@@ -38,6 +50,5 @@
 <script src="js/core/cart.js"></script>
   <script src="js/ui/site-components.js"></script>
   <script src="js/ui/cart-count.js"></script>
-  <script src="js/ui/brand-story-ui.js"></script>
 </body>
 </html>

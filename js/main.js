@@ -5,23 +5,23 @@ async function loadStorefront() {
 
   const journeys = [
     {
-      title: "Moving into my first apartment",
-      description: "Start with the essentials you'll actually use.",
+      title: "Building my first kitchen",
+      description: "Start with the basics, then let your real routines show you what to add next.",
       href: "bundles.html?type=starter"
     },
     {
       title: "Cooking more at home",
-      description: "Reliable tools for everyday meals.",
+      description: "Choose versatile tools that make weeknight meals easier to pull together.",
       href: "bundles.html?type=cooking"
     },
     {
-      title: "Need more storage",
-      description: "Simple organization for smaller kitchens.",
+      title: "Making a small space work",
+      description: "Protect your prep space and give the things you use most a sensible home.",
       href: "bundles.html?type=organization"
     },
     {
       title: "Simplifying my kitchen",
-      description: "Own less. Cook better.",
+      description: "Keep the tools that do real work. Let the rest go.",
       href: "bundles.html?type=minimal"
     }
   ];

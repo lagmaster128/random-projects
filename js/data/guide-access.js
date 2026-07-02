@@ -42,14 +42,17 @@
     const source = guide && typeof guide === "object" ? guide : {};
     const slug = source.slug || source.handle || MinoValidator.createSlug(source.title);
     const summary = source.summary || source.description || "";
+    const type = source.type === "playbook" ? "playbook" : "guide";
 
     return {
       ...source,
+      type,
       id: source.id || slug,
       slug,
       handle: source.handle || slug,
       summary,
       description: summary,
+      bestFor: normalizeTextList(source.bestFor),
       heroImage: MinoValidator.safeImagePath(source.heroImage),
       status: source.status || "published",
       sections: MinoValidator.safeArray(source.sections)
@@ -63,6 +66,11 @@
           heading: MinoValidator.safeText(section.heading),
           body: MinoValidator.safeText(section.body)
         })),
+      mealsEnabled: normalizeTextList(source.mealsEnabled),
+      essentialTools: normalizeToolList(source.essentialTools),
+      optionalTools: normalizeToolList(source.optionalTools),
+      supportingBundle: normalizeSupportingBundle(source.supportingBundle),
+      takeaway: MinoValidator.safeText(source.takeaway),
       seo: {
         title: `${MinoValidator.safeText(source.title, "Guide")} | Mino Kitchens`,
         description: summary,
@@ -71,11 +79,46 @@
     };
   }
 
+  function normalizeTextList(items) {
+    return MinoValidator.safeArray(items)
+      .map(item => MinoValidator.safeText(item).trim())
+      .filter(Boolean);
+  }
+
+  function normalizeToolList(items) {
+    return MinoValidator.safeArray(items)
+      .filter(item => item && typeof item === "object")
+      .map(item => ({
+        name: MinoValidator.safeText(item.name).trim(),
+        reason: MinoValidator.safeText(item.reason).trim()
+      }))
+      .filter(item => item.name && item.reason);
+  }
+
+  function normalizeSupportingBundle(bundle) {
+    if (!bundle || typeof bundle !== "object") {
+      return null;
+    }
+
+    const handle = MinoValidator.safeText(bundle.handle).trim();
+    const name = MinoValidator.safeText(bundle.name).trim();
+    const rationale = MinoValidator.safeText(bundle.rationale).trim();
+
+    return handle && name
+      ? { handle, name, rationale }
+      : null;
+  }
+
   function cloneGuide(guide) {
     return guide
       ? {
           ...guide,
           sections: guide.sections.map(section => ({ ...section })),
+          bestFor: guide.bestFor.map(value => value),
+          mealsEnabled: guide.mealsEnabled.map(meal => meal),
+          essentialTools: guide.essentialTools.map(tool => ({ ...tool })),
+          optionalTools: guide.optionalTools.map(tool => ({ ...tool })),
+          supportingBundle: guide.supportingBundle ? { ...guide.supportingBundle } : null,
           seo: { ...guide.seo }
         }
       : null;

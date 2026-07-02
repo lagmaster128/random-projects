@@ -7,7 +7,14 @@
     "description": "A practical foundation for mornings and simple prep, built around two versatile tools that fit comfortably into a new kitchen.",
     "image": "",
     "problemSolved": "Starting from scratch can lead to buying too much too quickly. This bundle covers a few repeatable daily routines while leaving room to learn what the kitchen actually needs.",
-    "idealFor": "First apartments, new homes, and anyone equipping an empty kitchen in deliberate stages.",
+    "idealFor": "College apartments, first rentals, and anyone equipping an empty kitchen in deliberate stages.",
+    "comparisonBestFor": "First apartments",
+    "primaryGoal": "Build a useful everyday foundation",
+    "enables": [
+      "Set up dependable morning routines",
+      "Prepare smoothies, soups, and simple sauces",
+      "Start small and add only what your habits require"
+    ],
     "includedProducts": [2, 3],
     "whyTogether": "The coffee maker supports a familiar daily ritual; the blender handles smoothies, soups, and sauces. Together they cover frequent routines without claiming more counter space than necessary.",
     "optionalAdditions": ["digital-air-fryer"],
@@ -21,7 +28,7 @@
         "answer": "No. Each product can be chosen separately as your routines become clearer."
       }
     ],
-    "ctaLabel": "Review the included products"
+    "ctaLabel": "See how the solution works"
   },
   {
     "id": 2,
@@ -31,7 +38,14 @@
     "description": "A compact pairing for weekday meals: one appliance for hot food and reheating, one for drinks, soups, and sauces.",
     "image": "",
     "problemSolved": "Weeknight cooking often needs speed and range, not more specialized tools. This set covers several common tasks with two straightforward appliances.",
-    "idealFor": "People building a steady home-cooking routine with limited time, counter space, or oven access.",
+    "idealFor": "Students and young professionals building a steady cooking routine with limited time, counter space, or oven access.",
+    "comparisonBestFor": "Everyday cooking",
+    "primaryGoal": "Make weeknight meals easier",
+    "enables": [
+      "Prepare simple hot meals",
+      "Reheat food without adding another specialty appliance",
+      "Make smoothies, soups, and sauces"
+    ],
     "includedProducts": [1, 3],
     "whyTogether": "The air fryer covers hot meals, roasting, and reheating while the blender supports drinks, soups, and sauces. Their jobs are distinct, useful, and broad enough to avoid narrower appliances.",
     "optionalAdditions": ["coffee-maker"],
@@ -45,7 +59,7 @@
         "answer": "Yes. Both products replace several narrower tools and store in a compact footprint."
       }
     ],
-    "ctaLabel": "Review the included products"
+    "ctaLabel": "See how the solution works"
   },
   {
     "id": 3,
@@ -55,7 +69,14 @@
     "description": "A compact countertop plan that keeps two frequent routines together and preserves space for preparation.",
     "image": "",
     "problemSolved": "In a small kitchen, organization begins with choosing fewer appliances and giving them a clear home. This set keeps daily tools contained instead of scattered across the counter.",
-    "idealFor": "Smaller kitchens where coffee and blended foods are regular routines, but clear preparation space still matters.",
+    "idealFor": "First apartments and smaller kitchens where daily routines matter, but clear preparation space matters too.",
+    "comparisonBestFor": "Small kitchens",
+    "primaryGoal": "Protect counter and preparation space",
+    "enables": [
+      "Keep frequent routines in one clear zone",
+      "Leave more counter space open for preparation",
+      "Organize around tools you use regularly"
+    ],
     "includedProducts": [2, 3],
     "whyTogether": "The coffee maker and blender support distinct, frequent routines, share a compact footprint, and can live together without taking over the main preparation area.",
     "optionalAdditions": ["digital-air-fryer"],
@@ -69,7 +90,7 @@
         "answer": "Measure your available counter and cabinet space before choosing any appliance."
       }
     ],
-    "ctaLabel": "Review the included products"
+    "ctaLabel": "See how the solution works"
   },
   {
     "id": 4,
@@ -79,7 +100,14 @@
     "description": "Two versatile appliances for a smaller, more capable setup—chosen to cover hot meals, reheating, drinks, soups, and sauces.",
     "image": "",
     "problemSolved": "A crowded kitchen often comes from tools that perform only one job. This bundle replaces several narrow uses with two appliances that support a wider range of everyday meals.",
-    "idealFor": "People simplifying an existing kitchen or choosing fewer appliances from the beginning.",
+    "idealFor": "People furnishing a small space, simplifying an existing kitchen, or choosing fewer appliances from the beginning.",
+    "comparisonBestFor": "Fewer, versatile tools",
+    "primaryGoal": "Cover more tasks with less clutter",
+    "enables": [
+      "Handle hot meals, reheating, drinks, soups, and sauces",
+      "Replace several narrower tools",
+      "Build a capable kitchen with a smaller footprint"
+    ],
     "includedProducts": [1, 3],
     "whyTogether": "The air fryer and blender solve different parts of the same routine: one handles heat, the other preparation. Together they offer useful range without duplicating each other.",
     "optionalAdditions": ["coffee-maker"],
@@ -93,6 +121,6 @@
         "answer": "Only if brewed coffee is already part of your regular routine."
       }
     ],
-    "ctaLabel": "Review the included products"
+    "ctaLabel": "See how the solution works"
   }
 ]

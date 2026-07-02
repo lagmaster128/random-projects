@@ -11,7 +11,7 @@
       container.innerHTML = `
         <div class="catalog-message">
           <h1>Guide not found</h1>
-          <p>This guide may have moved or is still being prepared.</p>
+          <p>This guide may have moved or is no longer available.</p>
           <a class="hero-button" href="guides.html">Browse guides</a>
         </div>
       `;

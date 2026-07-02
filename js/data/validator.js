@@ -44,6 +44,12 @@
       errors.push("Missing or empty required field: id");
     }
 
+    if (!hasText(product.handle)) {
+      warnings.push("Missing Shopify-ready handle; one will be generated from the product name");
+    } else if (createSlug(product.handle) !== product.handle) {
+      warnings.push("Product handle should use lowercase letters, numbers, and hyphens");
+    }
+
     ["name", "description", "image", "category"].forEach(field =>
       requireText(product, field, errors)
     );
@@ -74,7 +80,13 @@
       }
     }
 
-    ["features", "relatedProducts", "collectionHandles"].forEach(field => {
+    [
+      "features",
+      "relatedProducts",
+      "collectionHandles",
+      "bundleHandles",
+      "worksWellInBundleHandles"
+    ].forEach(field => {
       if (product[field] !== undefined && !Array.isArray(product[field])) {
         warnings.push(`${field} should be an array; an empty array will be used`);
       }
@@ -82,6 +94,35 @@
 
     if (!hasText(product.philosophyExplanation)) {
       warnings.push("Missing optional field: philosophyExplanation");
+    }
+
+    if (product.shopify !== undefined) {
+      if (!isRecord(product.shopify)) {
+        warnings.push("shopify should be an object when migration identifiers are added");
+      } else if (product.shopify.variantId !== undefined &&
+                 !hasId(product.shopify.variantId)) {
+        warnings.push("shopify.variantId must be a non-empty Shopify variant ID");
+      }
+    }
+
+    if (product.minoReview !== null && product.minoReview !== undefined) {
+      if (!isRecord(product.minoReview)) {
+        warnings.push("minoReview should be an object; the review will be hidden");
+      } else {
+        const score = product.minoReview.score;
+        if (score !== null && score !== undefined &&
+            (typeof score !== "number" || !Number.isFinite(score) ||
+             score < 0 || score > 100)) {
+          warnings.push("minoReview.score should be a number from 0 to 100");
+        }
+
+        ["positives", "complaints"].forEach(field => {
+          if (product.minoReview[field] !== undefined &&
+              !Array.isArray(product.minoReview[field])) {
+            warnings.push(`minoReview.${field} should be an array`);
+          }
+        });
+      }
     }
 
     return createResult(errors, warnings);
@@ -132,7 +173,7 @@
       }
     }
 
-    ["optionalAdditions", "faqs", "includedBundles"].forEach(field => {
+    ["optionalAdditions", "faqs", "includedBundles", "enables"].forEach(field => {
       if (bundle[field] !== undefined && !Array.isArray(bundle[field])) {
         warnings.push(`${field} should be an array; an empty array will be used`);
       }
@@ -167,7 +208,17 @@
       warnings.push("Invalid heroImage path; the guide placeholder will be used");
     }
 
-    if (guide.sections !== undefined && !Array.isArray(guide.sections)) {
+    if (guide.type !== undefined && !["guide", "playbook"].includes(guide.type)) {
+      warnings.push(`Unsupported guide type: ${guide.type}; the standard guide template will be used`);
+    }
+
+    if (guide.bestFor !== undefined && !Array.isArray(guide.bestFor)) {
+      warnings.push("bestFor should be an array; the label will be hidden");
+    }
+
+    if (guide.type === "playbook") {
+      validatePlaybookGuide(guide, warnings);
+    } else if (guide.sections !== undefined && !Array.isArray(guide.sections)) {
       warnings.push("sections should be an array; an empty array will be used");
     } else if (!guide.sections || guide.sections.length === 0) {
       warnings.push("Guide has no content sections");
@@ -180,6 +231,44 @@
     }
 
     return createResult(errors, warnings);
+  }
+
+  function validatePlaybookGuide(guide, warnings) {
+    [
+      ["mealsEnabled", "Playbook has no representative meals"],
+      ["essentialTools", "Playbook has no essential tools"],
+      ["optionalTools", "Playbook has no optional tools"]
+    ].forEach(([field, message]) => {
+      if (guide[field] !== undefined && !Array.isArray(guide[field])) {
+        warnings.push(`${field} should be an array; an empty array will be used`);
+      } else if (!guide[field] || guide[field].length === 0) {
+        warnings.push(message);
+      }
+    });
+
+    ["essentialTools", "optionalTools"].forEach(field => {
+      if (!Array.isArray(guide[field])) {
+        return;
+      }
+
+      guide[field].forEach((tool, index) => {
+        if (!isRecord(tool) || !hasText(tool.name) || !hasText(tool.reason)) {
+          warnings.push(`${field} item ${index + 1} should include name and reason`);
+        }
+      });
+    });
+
+    if (guide.supportingBundle !== undefined) {
+      if (!isRecord(guide.supportingBundle)) {
+        warnings.push("supportingBundle should be an object with handle and name");
+      } else if (!hasText(guide.supportingBundle.handle) || !hasText(guide.supportingBundle.name)) {
+        warnings.push("supportingBundle should include handle and name");
+      }
+    }
+
+    if (!hasText(guide.takeaway)) {
+      warnings.push("Playbook is missing a takeaway");
+    }
   }
 
   function validateCollection(collection, validator, options = {}) {

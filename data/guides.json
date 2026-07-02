@@ -1,8 +1,10 @@
 [
   {
+    "type": "guide",
     "handle": "first-apartment-kitchen-guide",
     "title": "First Apartment Kitchen Guide",
-    "description": "A clear starting point for choosing useful kitchen basics without overbuying.",
+    "description": "Decide which basics support your real routines before spending money on extras.",
+    "bestFor": ["First apartments", "Beginner cooks"],
     "sections": [
       {
         "heading": "Start with your regular meals",
@@ -11,6 +13,14 @@
       {
         "heading": "Build in stages",
         "body": "Begin with daily essentials. Add specialized tools only when a repeated need becomes clear."
+      },
+      {
+        "heading": "Cover complete tasks",
+        "body": "Make sure you can prepare, cook, serve, store, and clean up the meals you make most often before expanding the setup."
+      },
+      {
+        "heading": "Measure before you buy",
+        "body": "Check counter, cabinet, and drawer space so every product has a practical home before it enters the kitchen."
       }
     ],
     "seo": {
@@ -19,9 +29,11 @@
     }
   },
   {
+    "type": "guide",
     "handle": "small-kitchen-organization-guide",
     "title": "Small Kitchen Organization Guide",
-    "description": "Simple principles for making limited counters and cabinets easier to use.",
+    "description": "Make limited counters and cabinets work better before adding more storage products.",
+    "bestFor": ["Small kitchens", "Apartment renters"],
     "sections": [
       {
         "heading": "Protect working space",
@@ -30,6 +42,14 @@
       {
         "heading": "Choose by frequency",
         "body": "Place everyday items within reach and move less-used tools to higher or deeper storage."
+      },
+      {
+        "heading": "Reduce before organizing",
+        "body": "Remove duplicates and single-use tools first. Storage products work best after the kitchen contains only what supports real routines."
+      },
+      {
+        "heading": "Give each zone one purpose",
+        "body": "Keep preparation tools near the main work surface, cooking tools near the stove, and cleaning supplies together beneath or beside the sink."
       }
     ],
     "seo": {
@@ -38,9 +58,11 @@
     }
   },
   {
+    "type": "guide",
     "handle": "kitchen-essentials-checklist",
     "title": "Kitchen Essentials Checklist",
-    "description": "A restrained checklist built around everyday cooking, cleaning, and storage.",
+    "description": "A focused checklist for separating everyday needs from products you can skip for now.",
+    "bestFor": ["First kitchens", "Anyone starting from scratch"],
     "sections": [
       {
         "heading": "Cover the basics first",
@@ -49,17 +71,27 @@
       {
         "heading": "Check before adding",
         "body": "Ask whether an item solves a frequent problem or duplicates something you already own."
+      },
+      {
+        "heading": "Choose versatile versions",
+        "body": "Favor tools that support several meals or preparation tasks instead of products designed for one narrow use."
+      },
+      {
+        "heading": "Leave room to learn",
+        "body": "Your first setup does not need to anticipate every future meal. Keep space available for needs that become clear through use."
       }
     ],
     "seo": {
       "title": "Kitchen Essentials Checklist | Mino Kitchens",
-      "description": "Use a practical checklist to choose kitchen essentials without unnecessary extras."
+      "description": "Use a short checklist to cover the basics without padding your shopping list."
     }
   },
   {
+    "type": "guide",
     "handle": "meal-prep-basics",
     "title": "Meal Prep Basics",
-    "description": "A calm approach to preparing a few useful ingredients and meals ahead of time.",
+    "description": "Build a manageable preparation routine before deciding which tools deserve space in your kitchen.",
+    "bestFor": ["Busy schedules", "Meal prep beginners"],
     "sections": [
       {
         "heading": "Prepare for real routines",
@@ -68,11 +100,307 @@
       {
         "heading": "Keep the system small",
         "body": "One preparation block, a short ingredient list, and clear containers are often enough."
+      },
+      {
+        "heading": "Choose tools that reduce steps",
+        "body": "A reliable knife, cutting board, sheet pan or pot, and practical storage usually matter more than specialized prep gadgets."
+      },
+      {
+        "heading": "Store what you will actually eat",
+        "body": "Use portions, labels, and visible placement to make prepared food easy to identify and finish before it is wasted."
       }
     ],
     "seo": {
       "title": "Meal Prep Basics | Mino Kitchens",
       "description": "Build a simple meal-prep routine around useful portions and familiar meals."
     }
+  },
+  {
+    "type": "playbook",
+    "handle": "pasta-kitchen-playbook",
+    "title": "Pasta Kitchen Playbook",
+    "description": "Understand the small setup that supports weeknight pasta, noodle bowls, and simple one-pot meals.",
+    "bestFor": ["Beginner cooks", "Weeknight meals"],
+    "mealsEnabled": [
+      "Spaghetti with jarred or homemade sauce",
+      "Alfredo-style pasta",
+      "Ramen or noodle bowls",
+      "Mac and cheese",
+      "Simple skillet pasta"
+    ],
+    "essentialTools": [
+      {
+        "name": "Medium pot",
+        "reason": "Handles boiling pasta, noodles, and simple soups without requiring a full cookware collection."
+      },
+      {
+        "name": "Strainer or colander",
+        "reason": "Makes draining pasta and rinsing vegetables easier and safer."
+      },
+      {
+        "name": "Heat-safe spoon or tongs",
+        "reason": "Covers stirring, tossing, and serving most pasta meals."
+      },
+      {
+        "name": "Cutting board and knife",
+        "reason": "Supports small prep tasks like chopping garlic, vegetables, or garnish."
+      }
+    ],
+    "optionalTools": [
+      {
+        "name": "Large sauté pan",
+        "reason": "Useful when finishing pasta with sauce or vegetables in the pan."
+      },
+      {
+        "name": "Microplane or grater",
+        "reason": "Adds convenience for cheese, garlic, and citrus, but is not required to begin."
+      }
+    ],
+    "supportingBundle": {
+      "handle": "everyday-cooking-kit",
+      "name": "Everyday Cooking Kit",
+      "rationale": "Best for building a small cooking routine around repeatable weeknight meals without crowding the kitchen."
+    },
+    "takeaway": "A pasta-ready kitchen does not need many gadgets. Start with boiling, draining, stirring, and simple prep."
+  },
+  {
+    "type": "playbook",
+    "handle": "stir-fry-kitchen-playbook",
+    "title": "Stir Fry Kitchen Playbook",
+    "description": "Build the basic capability for fast rice bowls, vegetable skillets, and simple protein-and-sauce meals.",
+    "bestFor": ["Fast dinners", "Everyday cooking"],
+    "mealsEnabled": [
+      "Vegetable stir fry",
+      "Chicken or tofu rice bowls",
+      "Fried rice",
+      "Noodle stir fry",
+      "Quick skillet vegetables"
+    ],
+    "essentialTools": [
+      {
+        "name": "Wide skillet or sauté pan",
+        "reason": "Gives ingredients enough room to cook quickly without steaming everything together."
+      },
+      {
+        "name": "Spatula or cooking spoon",
+        "reason": "Covers stirring, turning, and moving food through the pan."
+      },
+      {
+        "name": "Cutting board and knife",
+        "reason": "Makes quick vegetable and protein prep possible before the pan gets hot."
+      },
+      {
+        "name": "Measuring spoon or small bowl",
+        "reason": "Helps keep sauces simple and controlled without buying specialty tools."
+      }
+    ],
+    "optionalTools": [
+      {
+        "name": "Rice cooker",
+        "reason": "Helpful for frequent rice bowls, but beginners can start with a pot."
+      },
+      {
+        "name": "Wok",
+        "reason": "Useful for high-heat cooking if you make stir fry often, but not necessary for most first kitchens."
+      }
+    ],
+    "supportingBundle": {
+      "handle": "everyday-cooking-kit",
+      "name": "Everyday Cooking Kit",
+      "rationale": "Supports quick hot meals and flexible prep without pushing a beginner toward specialized cookware too soon."
+    },
+    "takeaway": "The core skill is organized prep plus one reliable hot cooking surface. Keep the setup simple until the routine sticks."
+  },
+  {
+    "type": "playbook",
+    "handle": "breakfast-kitchen-playbook",
+    "title": "Breakfast Kitchen Playbook",
+    "description": "Set up for low-friction mornings with tools that support coffee, smoothies, eggs, oats, and simple reheating.",
+    "bestFor": ["Busy mornings", "First apartments"],
+    "mealsEnabled": [
+      "Coffee and toast-style breakfasts",
+      "Smoothies",
+      "Eggs or breakfast sandwiches",
+      "Oatmeal",
+      "Reheated leftovers"
+    ],
+    "essentialTools": [
+      {
+        "name": "Coffee maker or kettle",
+        "reason": "Supports a daily morning ritual without needing a full beverage station."
+      },
+      {
+        "name": "Small pan or compact hot appliance",
+        "reason": "Covers eggs, reheating, and quick warm breakfasts."
+      },
+      {
+        "name": "Blender",
+        "reason": "Useful for smoothies, sauces, and simple prep beyond breakfast."
+      },
+      {
+        "name": "Basic prep tools",
+        "reason": "A cutting board, knife, and spoon cover fruit, spreads, and small assembly tasks."
+      }
+    ],
+    "optionalTools": [
+      {
+        "name": "Toaster",
+        "reason": "Convenient if toast is daily, but many first kitchens can wait before adding one."
+      },
+      {
+        "name": "Travel mug or storage cup",
+        "reason": "Helpful for rushed mornings, especially in small apartments or dorm routines."
+      }
+    ],
+    "supportingBundle": {
+      "handle": "first-apartment-kit",
+      "name": "First Apartment Kit",
+      "rationale": "A calm starting point for daily breakfast routines before adding more appliances."
+    },
+    "takeaway": "Morning tools should earn their counter space. Start with the habits you repeat most often."
+  },
+  {
+    "type": "playbook",
+    "handle": "soup-kitchen-playbook",
+    "title": "Soup Kitchen Playbook",
+    "description": "Create the basic setup for soups, stews, chili, and blended comfort meals without overbuying specialty tools.",
+    "bestFor": ["Batch cooking", "Beginner cooks"],
+    "mealsEnabled": [
+      "Vegetable soup",
+      "Chicken noodle soup",
+      "Chili",
+      "Lentil or bean soup",
+      "Blended tomato or squash soup"
+    ],
+    "essentialTools": [
+      {
+        "name": "Large pot",
+        "reason": "Provides enough room for simmering, stirring, and making multiple portions."
+      },
+      {
+        "name": "Ladle or deep spoon",
+        "reason": "Makes serving and portioning easier without needing a large utensil set."
+      },
+      {
+        "name": "Cutting board and knife",
+        "reason": "Covers the simple vegetable prep most soup routines require."
+      },
+      {
+        "name": "Storage containers",
+        "reason": "Turns one cooking session into several meals and reduces waste."
+      }
+    ],
+    "optionalTools": [
+      {
+        "name": "Blender",
+        "reason": "Expands the setup into smooth soups and sauces when that becomes part of your routine."
+      },
+      {
+        "name": "Dutch oven",
+        "reason": "A durable upgrade for frequent soup and stew cooking, but not required at the start."
+      }
+    ],
+    "supportingBundle": {
+      "handle": "simplified-kitchen-kit",
+      "name": "Simplified Kitchen Kit",
+      "rationale": "Fits the idea of choosing fewer tools that cover heating, prep, and blended meals."
+    },
+    "takeaway": "Soup is a strong first-kitchen category because one pot and good storage can support many meals."
+  },
+  {
+    "type": "playbook",
+    "handle": "baking-basics-playbook",
+    "title": "Baking Basics Playbook",
+    "description": "Separate true baking essentials from nice-to-have tools before dedicating cabinet space to them.",
+    "bestFor": ["New bakers", "Multipurpose oven cooking"],
+    "mealsEnabled": [
+      "Sheet-pan breakfasts",
+      "Muffins or quick breads",
+      "Cookies",
+      "Roasted vegetables",
+      "Simple baked pasta"
+    ],
+    "essentialTools": [
+      {
+        "name": "Sheet pan",
+        "reason": "One of the most versatile oven tools for baking, roasting, and reheating."
+      },
+      {
+        "name": "Mixing bowl",
+        "reason": "Supports simple batters, tossing vegetables, and everyday prep."
+      },
+      {
+        "name": "Measuring cups and spoons",
+        "reason": "Makes baking more repeatable without requiring a large tool collection."
+      },
+      {
+        "name": "Spatula",
+        "reason": "Handles mixing, scraping, and transferring most beginner baking tasks."
+      }
+    ],
+    "optionalTools": [
+      {
+        "name": "Loaf pan or muffin tin",
+        "reason": "Worth adding once you know which baked goods you make often."
+      },
+      {
+        "name": "Cooling rack",
+        "reason": "Improves results for cookies and breads, but is easy to add later."
+      }
+    ],
+    "supportingBundle": {
+      "handle": "everyday-cooking-kit",
+      "name": "Everyday Cooking Kit",
+      "rationale": "Pairs well with a practical first-kitchen setup focused on repeatable meals and prep."
+    },
+    "takeaway": "Begin with oven versatility, not a cabinet full of specialty pans."
+  },
+  {
+    "type": "playbook",
+    "handle": "meal-prep-kitchen-playbook",
+    "title": "Meal Prep Kitchen Playbook",
+    "description": "Set up a practical system for preparing a few meals ahead without turning your kitchen into a storage project.",
+    "bestFor": ["Busy schedules", "Weekly meal prep"],
+    "mealsEnabled": [
+      "Rice or grain bowls",
+      "Prepped breakfast portions",
+      "Soup or chili for several meals",
+      "Roasted vegetables and protein",
+      "Smoothie packs"
+    ],
+    "essentialTools": [
+      {
+        "name": "Storage containers",
+        "reason": "The foundation of meal prep is portioning and storing food clearly."
+      },
+      {
+        "name": "Sheet pan or hot cooking appliance",
+        "reason": "Lets you prepare several portions without managing too many steps."
+      },
+      {
+        "name": "Cutting board and knife",
+        "reason": "Keeps repeated prep simple, fast, and less frustrating."
+      },
+      {
+        "name": "Mixing bowl",
+        "reason": "Useful for tossing, portioning, marinating, and organizing ingredients before cooking."
+      }
+    ],
+    "optionalTools": [
+      {
+        "name": "Blender",
+        "reason": "Helpful for smoothies, sauces, and blended soups if those are part of the weekly plan."
+      },
+      {
+        "name": "Labels or removable tape",
+        "reason": "Useful for shared fridges or freezer storage, but not required for a simple weekly routine."
+      }
+    ],
+    "supportingBundle": {
+      "handle": "small-kitchen-organization-kit",
+      "name": "Small Kitchen Organization Kit",
+      "rationale": "Keeps the focus on repeatable routines and clear storage instead of accumulating more tools."
+    },
+    "takeaway": "Meal prep works best when the system is small enough to repeat. Buy for the routine, not the ideal version of it."
   }
 ]

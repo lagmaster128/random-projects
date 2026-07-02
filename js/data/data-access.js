@@ -97,6 +97,9 @@
         title: source.category || "",
         description: ""
       };
+    const reviewSource = source.minoReview && typeof source.minoReview === "object"
+      ? source.minoReview
+      : null;
 
     return {
       ...source,
@@ -115,6 +118,23 @@
       easyToClean: MinoValidator.safeText(source.easyToClean, "Follow the product care instructions."),
       bestFor: source.bestFor || "Everyday kitchen routines.",
       relatedProducts: [...MinoValidator.safeArray(source.relatedProducts)],
+      bundleHandles: [...MinoValidator.safeArray(source.bundleHandles)].filter(Boolean),
+      worksWellInBundleHandles: [
+        ...MinoValidator.safeArray(source.worksWellInBundleHandles)
+      ].filter(Boolean),
+      minoReview: reviewSource
+        ? {
+            score: Number.isFinite(reviewSource.score) ? reviewSource.score : null,
+            approved: typeof reviewSource.approved === "boolean"
+              ? reviewSource.approved
+              : null,
+            positives: [...MinoValidator.safeArray(reviewSource.positives)].filter(Boolean),
+            complaints: [...MinoValidator.safeArray(reviewSource.complaints)].filter(Boolean),
+            rationale: MinoValidator.safeText(
+              reviewSource.rationale || reviewSource.internalNotes
+            )
+          }
+        : null,
       seo: {
         title: `${MinoValidator.safeText(source.name, "Product")} | Mino Kitchens`,
         description: MinoValidator.safeText(source.description),
@@ -143,6 +163,15 @@
       features: [...product.features],
       philosophy: [...product.philosophy],
       relatedProducts: [...product.relatedProducts],
+      bundleHandles: [...product.bundleHandles],
+      worksWellInBundleHandles: [...product.worksWellInBundleHandles],
+      minoReview: product.minoReview
+        ? {
+            ...product.minoReview,
+            positives: [...product.minoReview.positives],
+            complaints: [...product.minoReview.complaints]
+          }
+        : null,
       seo: { ...product.seo }
     };
   }

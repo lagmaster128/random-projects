@@ -27,3 +27,71 @@ Bundle records separate solution copy, included product IDs, optional product
 handles, and FAQs from their renderer. Product philosophy values and the
 `problemSolved`, `whyChosen`, `spaceSaving`, `easyToClean`, and `bestFor`
 fields can move directly into Shopify metafields without changing page UI.
+
+## Commerce identity contract
+
+Catalog `id` values are internal content references only. They must never be
+sent to Shopify's cart endpoint. Shopify cart requests use a product variant ID;
+cart changes should use the returned line item key whenever possible.
+
+During migration, add Shopify identifiers without replacing the stable Mino
+handle or internal ID:
+
+```json
+{
+  "id": 1,
+  "handle": "digital-air-fryer",
+  "shopify": {
+    "productId": "gid://shopify/Product/...",
+    "variantId": "..."
+  }
+}
+```
+
+Do not invent these values before products exist in Shopify. The readiness
+check reports missing variant IDs as migration items, not catalog errors.
+
+## Metafield map
+
+Use a `mino` namespace and preserve these data-driven fields:
+
+| Current field | Shopify destination |
+| --- | --- |
+| `problemSolved` | `mino.problem_solved` (multi-line text) |
+| `whyChosen` | `mino.why_chosen` (multi-line text) |
+| `bestFor` | `mino.best_for` (multi-line text) |
+| `spaceSaving` | `mino.space_saving` (multi-line text) |
+| `easyToClean` | `mino.easy_to_clean` (multi-line text) |
+| `philosophy` | `mino.philosophy` (list of single-line text) |
+| `philosophyExplanation` | `mino.philosophy_explanation` (multi-line text) |
+| `minoReview.score` | `mino.score` (integer) |
+| `minoReview.approved` | `mino.approved` (boolean) |
+| `minoReview.positives` | `mino.positives` (list of single-line text) |
+| `minoReview.complaints` | `mino.complaints` (list of single-line text) |
+| `minoReview.rationale` | `mino.rationale` (multi-line text) |
+
+Bundles should become Shopify bundle products or curated metaobjects that
+reference product variants. Keep the existing bundle handle as the stable
+migration key. Do not duplicate bundle membership onto products unless a
+Shopify theme query requires a derived lookup.
+
+## Activation sequence
+
+1. Create products, variants, SKUs, inventory rules, weights, and shipping data
+   in Shopify.
+2. Import Mino content and define the metafields above.
+3. Create bundle products or metaobjects and verify component inventory behavior.
+4. Replace `StoreData` and `BundleData` internals with Liquid or Storefront API data.
+5. Replace local cart storage with locale-aware Ajax Cart requests using variant IDs.
+6. Use Shopify's `canonical_url`, money filters, product availability, policy
+   objects, and checkout rather than duplicating those systems in JavaScript.
+7. Run `node scripts/shopify-readiness.js`, theme checks, keyboard testing, and
+   a real test order before opening the store.
+
+## Launch-owned settings
+
+The following belong in Shopify admin and intentionally remain outside this
+prototype: payments, taxes, markets/currency, shipping profiles, inventory,
+customer notifications, domain/DNS, analytics consent, and the refund,
+privacy, terms, shipping, and contact policies. Confirm every one before
+removing the storefront password.

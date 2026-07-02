@@ -60,6 +60,9 @@
       problemSolved: MinoValidator.safeText(source.problemSolved, source.description || ""),
       whyTogether: MinoValidator.safeText(source.whyTogether, "Selected to support the same kitchen routine."),
       ctaLabel: MinoValidator.safeText(source.ctaLabel, "Review the included products"),
+      comparisonBestFor: MinoValidator.safeText(source.comparisonBestFor),
+      primaryGoal: MinoValidator.safeText(source.primaryGoal),
+      enables: [...MinoValidator.safeArray(source.enables)].filter(Boolean),
       includedProducts: Array.isArray(source.includedProducts)
         ? [...source.includedProducts]
         : source.includedProducts,
@@ -89,6 +92,7 @@
           includedProducts: [...bundle.includedProducts],
           optionalAdditions: [...bundle.optionalAdditions],
           includedBundles: [...bundle.includedBundles],
+          enables: [...bundle.enables],
           faqs: bundle.faqs.map(faq => ({ ...faq }))
         }
       : null;
@@ -115,9 +119,47 @@
       .map(cloneBundle);
   }
 
+  async function getProductBundleRelationships(product) {
+    const source = product && typeof product === "object" ? product : {};
+    const bundles = await loadBundles();
+    const includedHandles = new Set(MinoValidator.safeArray(source.bundleHandles));
+    const relatedHandles = new Set(
+      MinoValidator.safeArray(source.worksWellInBundleHandles)
+    );
+    const relationships = new Map();
+
+    bundles.forEach(bundle => {
+      const isIncluded = includedHandles.has(bundle.handle) ||
+        bundle.includedProducts.some(id => String(id) === String(source.id));
+      const worksWell = relatedHandles.has(bundle.handle) ||
+        bundle.optionalAdditions.includes(source.handle);
+
+      if (isIncluded || worksWell) {
+        relationships.set(bundle.handle, {
+          bundle: cloneBundle(bundle),
+          relationship: isIncluded ? "included" : "works-well"
+        });
+      }
+    });
+
+    const knownHandles = new Set(bundles.map(bundle => bundle.handle));
+    const missingHandles = [...includedHandles, ...relatedHandles]
+      .filter(handle => !knownHandles.has(handle));
+
+    if (missingHandles.length > 0) {
+      MinoValidator.report("Bundle relationships", {
+        errors: [],
+        warnings: missingHandles.map(handle => `Missing bundle handle: ${handle}`)
+      });
+    }
+
+    return [...relationships.values()];
+  }
+
   global.BundleData = Object.freeze({
     getBundleByHandle,
     getBundles,
-    getBundlesByType
+    getBundlesByType,
+    getProductBundleRelationships
   });
 })(window);

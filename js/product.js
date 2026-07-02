@@ -18,12 +18,18 @@ async function loadProduct() {
       return;
     }
 
-    const relatedProducts = await StoreData.getProductsByHandles(
-      product.relatedProducts
-    );
+    const [relatedProducts, bundleRelationships] = await Promise.all([
+      StoreData.getProductsByHandles(product.relatedProducts),
+      BundleData.getProductBundleRelationships(product)
+    ]);
 
     updateProductMetadata(product);
-    ProductUI.renderProductDetail(container, product, relatedProducts);
+    ProductUI.renderProductDetail(
+      container,
+      product,
+      relatedProducts,
+      bundleRelationships
+    );
   } catch (error) {
     renderProductMessage(
       container,
@@ -55,7 +61,7 @@ function renderProductMessage(container, heading, copy) {
     <div class="catalog-message">
       <h1>${heading}</h1>
       <p>${copy}</p>
-      <a class="hero-button" href="products.html">Browse Products</a>
+      <a class="hero-button" href="bundles.html">Browse kitchen bundles</a>
     </div>
   `;
 }

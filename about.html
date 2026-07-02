@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn why Mino Kitchens chooses practical essentials and curated bundles for simpler everyday kitchens.">
+    <meta name="description" content="Learn why Mino Kitchens helps people build their first functional kitchen through thoughtfully curated essentials, guidance, and complete solutions.">
     <title>About Mino Kitchens</title>
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
@@ -19,57 +19,55 @@
     <site-header></site-header>
 
     <main class="about-page">
-      <header class="about-hero">
+      <header class="about-hero about-hero--text">
         <div>
           <p class="eyebrow">Our Story</p>
           <h1>About Mino Kitchens</h1>
-          <p>A simpler kitchen starts here.</p>
+          <p>A kitchen shouldn't be this hard to figure out.</p>
         </div>
-        <div
-          class="about-lifestyle-image image-placeholder"
-          role="img"
-          aria-label="A calm, organized kitchen lifestyle image placeholder"
-        ></div>
       </header>
 
-      <section class="about-story" aria-labelledby="about-philosophy-heading">
-        <p class="eyebrow">Our Story</p>
-        <h2 id="about-philosophy-heading">Our Philosophy</h2>
+      <article class="about-story" aria-label="Why Mino Kitchens exists">
         <div class="about-story-copy">
-          <p>The modern kitchen has become crowded with gadgets, one-purpose tools, and endless choices. We think there's a better way.</p>
-          <p>Mino Kitchens was created around a simple idea: you don't need more kitchen products—you need the right ones.</p>
-          <p>We believe every item should solve a real problem, save space, and earn a permanent place in your kitchen.</p>
-          <p>Instead of overwhelming you with hundreds of options, we carefully curate practical essentials and thoughtfully designed bundles that make cooking, organizing, and everyday life a little simpler.</p>
-          <p>Whether you're moving into your first apartment, upgrading a small kitchen, or simply looking to declutter, our goal is the same: help you build a kitchen that's functional, organized, and enjoyable to use.</p>
+          <div class="about-story-group">
+            <p>When I first started learning to cook, I quickly realized that finding recipes was easy—but understanding what I actually needed in my kitchen wasn't.</p>
+            <p>Most of what I learned came from asking family and friends. There wasn't a simple place that explained the fundamentals: which tools were truly essential, which ones could wait, and how to build a kitchen without wasting money on things I'd rarely use.</p>
+          </div>
+
+          <div class="about-story-group">
+            <p>As I got older and started thinking about building my own kitchen, I ran into a different problem.</p>
+            <p>Shopping online felt overwhelming.</p>
+            <p>Large marketplaces offered thousands of products, endless reviews, and dozens of nearly identical options. Every purchase meant opening another tab, comparing another product, and wondering whether I was buying something I'd actually use.</p>
+            <p>It felt like building a kitchen required as much research as the cooking itself.</p>
+          </div>
+
+          <div class="about-story-pivot">
+            <p>That's why I created Mino Kitchens.</p>
+            <p>Not to sell the most products.</p>
+            <p>To make building a kitchen simpler.</p>
+          </div>
+
+          <div class="about-story-group">
+            <p>Every product is chosen because it solves a real problem, earns its place, and helps create a kitchen that's practical, organized, and enjoyable to use. Instead of asking you to sort through hundreds of choices, Mino focuses on thoughtfully curated essentials and bundles that work well together.</p>
+            <p>Our guides follow the same philosophy. Rather than teaching hundreds of recipes, they help you understand what you actually need to cook with confidence, organize your space, and avoid unnecessary purchases.</p>
+            <p>Whether you're moving into your first apartment, setting up a small kitchen, or replacing clutter with better essentials, Mino exists to help you build a kitchen with confidence.</p>
+          </div>
         </div>
-      </section>
+      </article>
 
-      <mino-mission-block></mino-mission-block>
+      <aside class="mission-block about-mission" aria-labelledby="about-mission-heading">
+        <p class="eyebrow">Our Mission</p>
+        <h2 id="about-mission-heading">Build your first functional kitchen with confidence.</h2>
+        <p>To help people build their first functional kitchen through thoughtfully curated essentials, practical guidance, and complete solutions that reduce clutter, simplify everyday cooking, and help every purchase earn its place.</p>
+      </aside>
 
-      <section class="about-principles" aria-labelledby="brand-principles-heading">
-        <mino-section-header
-          eyebrow="How we choose"
-          heading="Every product should"
-          heading-id="brand-principles-heading"
-          copy="A short standard for deciding what belongs in the Mino Kitchens collection."
-        ></mino-section-header>
-        <mino-brand-principles aria-labelledby="brand-principles-heading"></mino-brand-principles>
-      </section>
-
-      <mino-cta-banner
-        heading="Own less. Cook better."
-        copy="We're here to help you build a kitchen you'll enjoy using every day—not by selling more, but by helping you choose better."
-        href="bundles.html"
-        label="Browse Bundles"
-      ></mino-cta-banner>
+      <p class="about-mantra">Spend less. Cook more.</p>
     </main>
 
     <site-footer></site-footer>
     <script src="js/data/validator.js"></script>
-<script src="js/core/cart.js"></script>
+    <script src="js/core/cart.js"></script>
     <script src="js/ui/site-components.js"></script>
     <script src="js/ui/cart-count.js"></script>
-    <script src="js/ui/guidance-ui.js"></script>
-    <script src="js/ui/brand-story-ui.js"></script>
   </body>
 </html>

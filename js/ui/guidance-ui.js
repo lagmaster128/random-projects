@@ -52,7 +52,7 @@
   function renderProductPhilosophy(container, product) {
     const heading = document.createElement("h2");
     heading.id = "product-selection-heading";
-    heading.textContent = "Why we chose this product";
+    heading.textContent = "Why we'd give this space in the kitchen";
 
     const approval = createApprovalMark(["Mino Approved"]);
     const badges = document.createElement("div");
@@ -67,11 +67,11 @@
     const details = document.createElement("dl");
     details.className = "selection-grid";
     [
-      ["Problem it solves", product?.problemSolved],
-      ["Why it was chosen", product?.whyChosen],
-      ["Space saving", product?.spaceSaving],
-      ["Easy to clean", product?.easyToClean],
-      ["Best for", product?.bestFor]
+      ["The problem it solves", product?.problemSolved],
+      ["Why we chose it", product?.whyChosen],
+      ["What it asks of your space", product?.spaceSaving],
+      ["Cleaning and care", product?.easyToClean],
+      ["Who it'll suit", product?.bestFor]
     ].forEach(([label, value]) => {
       const item = document.createElement("div");
       const term = document.createElement("dt");

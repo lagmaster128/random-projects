@@ -42,7 +42,12 @@
     }
 
     return {
-      ...item,
+      id: item.id,
+      handle: typeof item.handle === "string" ? item.handle : "",
+      variantId: item.variantId || item.shopify?.variantId || null,
+      lineKey: item.lineKey || null,
+      name: item.name.trim(),
+      image: typeof item.image === "string" ? item.image : "",
       price,
       quantity
     };
@@ -63,12 +68,18 @@
   }
 
   function findItemIndex(id) {
-    return items.findIndex(item => String(item.id) === String(id));
+    return items.findIndex(item => getItemIdentity(item) === String(id));
+  }
+
+  function getItemIdentity(item) {
+    // Shopify uses a line key when available because one variant can appear in
+    // multiple cart lines with different properties.
+    return String(item.lineKey || item.variantId || item.shopify?.variantId || item.id);
   }
 
   function addItem(product, quantity = 1) {
     const amount = Math.max(1, Math.floor(Number(quantity) || 1));
-    const index = findItemIndex(product.id);
+    const index = findItemIndex(getItemIdentity(product));
 
     if (index >= 0) {
       items[index].quantity += amount;
@@ -89,7 +100,7 @@
   }
 
   function removeItem(id) {
-    const nextItems = items.filter(item => String(item.id) !== String(id));
+    const nextItems = items.filter(item => getItemIdentity(item) !== String(id));
 
     if (nextItems.length === items.length) {
       return;
@@ -168,6 +179,7 @@
     addItem,
     clear,
     getCount,
+    getItemIdentity,
     getItems: snapshot,
     getSubtotal,
     removeItem,
