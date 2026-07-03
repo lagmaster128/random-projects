@@ -5,24 +5,36 @@
     "title": "First Apartment Kitchen Guide",
     "description": "Decide which basics support your real routines before spending money on extras.",
     "bestFor": ["First apartments", "Beginner cooks"],
-    "sections": [
-      {
-        "heading": "Start with your regular meals",
-        "body": "List what you already cook each week before choosing tools or appliances."
-      },
-      {
-        "heading": "Build in stages",
-        "body": "Begin with daily essentials. Add specialized tools only when a repeated need becomes clear."
-      },
-      {
-        "heading": "Cover complete tasks",
-        "body": "Make sure you can prepare, cook, serve, store, and clean up the meals you make most often before expanding the setup."
-      },
-      {
-        "heading": "Measure before you buy",
-        "body": "Check counter, cabinet, and drawer space so every product has a practical home before it enters the kitchen."
-      }
+    "whyItMatters": [
+      "An empty kitchen makes everything feel essential. It isn't. The useful starting point is a small setup that lets you prepare, cook, eat, store leftovers, and clean up without fighting the space.",
+      "Your first few weeks will tell you more than any oversized checklist can. Build around meals you already enjoy, then add a tool only when the same need keeps showing up. You'll spend less and end up with a kitchen that fits the way you actually live."
     ],
+    "keyTakeaways": [
+      "Plan around familiar meals, not an imagined version of how you might cook someday.",
+      "Cover preparation, cooking, serving, storage, and cleanup before buying specialty tools.",
+      "Choose versatile basics that can do more than one job.",
+      "Measure counters, cabinets, shelves, and drawers before bringing anything home.",
+      "Leave room to learn. A first kitchen can be complete without being fully stocked."
+    ],
+    "beginnerTips": [
+      "Write down five meals you expect to make regularly. Use that short list to decide which tools deserve space.",
+      "Start with one dependable knife, one cutting board, and the cookware your usual meals require instead of buying a large matching set.",
+      "Read a recipe all the way through and prepare the ingredients before turning on the stove. Cooking feels much calmer when the next step is ready.",
+      "Keep raw meat and its juices away from produce and ready-to-eat food. Wash your hands, board, utensils, and work surface before moving on."
+    ],
+    "commonMistakes": [
+      "Buying for every possible meal. Start with your real routine; specialty equipment can wait until you know you'll use it.",
+      "Choosing sets because they look complete. They often include duplicate sizes or tools that never leave the drawer.",
+      "Ignoring storage dimensions. A useful tool becomes frustrating when it has no sensible place to live.",
+      "Treating cleanup as a final project. Wash or rinse a few things during natural pauses so the kitchen is manageable when dinner is done."
+    ],
+    "recommendedEssentials": {
+      "intro": "If you're starting with an empty space, focus first on the tools that support your most repeated routines. Mino's First Apartment Kit is designed as a compact starting point, with room to add cookware and preparation tools as your habits become clearer.",
+      "bundle": {
+        "handle": "first-apartment-kit",
+        "name": "First Apartment Kit"
+      }
+    },
     "seo": {
       "title": "First Apartment Kitchen Guide | Mino Kitchens",
       "description": "Plan a practical first-apartment kitchen around the meals and routines you use most."
@@ -34,24 +46,36 @@
     "title": "Small Kitchen Organization Guide",
     "description": "Make limited counters and cabinets work better before adding more storage products.",
     "bestFor": ["Small kitchens", "Apartment renters"],
-    "sections": [
-      {
-        "heading": "Protect working space",
-        "body": "Keep the main preparation area clear and store occasional tools away from the counter."
-      },
-      {
-        "heading": "Choose by frequency",
-        "body": "Place everyday items within reach and move less-used tools to higher or deeper storage."
-      },
-      {
-        "heading": "Reduce before organizing",
-        "body": "Remove duplicates and single-use tools first. Storage products work best after the kitchen contains only what supports real routines."
-      },
-      {
-        "heading": "Give each zone one purpose",
-        "body": "Keep preparation tools near the main work surface, cooking tools near the stove, and cleaning supplies together beneath or beside the sink."
-      }
+    "whyItMatters": [
+      "A small kitchen can work beautifully, but every surface has to do its job. When counters become permanent storage, even making a sandwich can feel harder than it should.",
+      "Good organization starts with fewer things, not more containers. Once you remove duplicates and tools you rarely use, simple zones make the remaining space easier to understand: prep near the cutting board, cooking tools near the stove, and cleaning supplies near the sink."
     ],
+    "keyTakeaways": [
+      "Protect one clear stretch of counter as your main preparation space.",
+      "Store by frequency: daily tools within easy reach, occasional tools higher or farther back.",
+      "Reduce duplicates before buying organizers. Storage can't fix having too much stuff.",
+      "Keep related tools together so each part of the kitchen supports one clear task.",
+      "Choose stackable or multipurpose items when they genuinely replace several separate pieces."
+    ],
+    "beginnerTips": [
+      "Empty one drawer or cabinet at a time. Sorting the whole kitchen at once usually creates more stress than clarity.",
+      "Keep the knife and cutting board close to your main work surface, but store knives securely rather than loose in a drawer.",
+      "Give frequently used appliances a defined home. If one stays on the counter, make sure it earns that space through regular use.",
+      "Label leftovers with the date and place older food where you can see it. Visibility makes it easier to use food before it goes to waste."
+    ],
+    "commonMistakes": [
+      "Buying organizers before measuring. Check height, width, depth, and door clearance so the organizer actually fits.",
+      "Using every inch of counter for storage. Open work space is part of a functional kitchen, not unused space.",
+      "Stacking items so tightly that daily tools are hard to reach. If access is annoying, the system won't last.",
+      "Keeping duplicates just in case. Hold on to the version you reach for and let the extra go unless it serves a real, separate purpose."
+    ],
+    "recommendedEssentials": {
+      "intro": "The most helpful additions are the ones that protect your work surface and keep regular routines contained. The Small Kitchen Organization Kit is a useful reference point for building around a compact footprint rather than filling every open shelf.",
+      "bundle": {
+        "handle": "small-kitchen-organization-kit",
+        "name": "Small Kitchen Organization Kit"
+      }
+    },
     "seo": {
       "title": "Small Kitchen Organization Guide | Mino Kitchens",
       "description": "Organize a smaller kitchen around clear work areas and frequently used essentials."
@@ -63,24 +87,36 @@
     "title": "Kitchen Essentials Checklist",
     "description": "A focused checklist for separating everyday needs from products you can skip for now.",
     "bestFor": ["First kitchens", "Anyone starting from scratch"],
-    "sections": [
-      {
-        "heading": "Cover the basics first",
-        "body": "Prioritize preparation, cooking, serving, food storage, and cleaning before optional tools."
-      },
-      {
-        "heading": "Check before adding",
-        "body": "Ask whether an item solves a frequent problem or duplicates something you already own."
-      },
-      {
-        "heading": "Choose versatile versions",
-        "body": "Favor tools that support several meals or preparation tasks instead of products designed for one narrow use."
-      },
-      {
-        "heading": "Leave room to learn",
-        "body": "Your first setup does not need to anticipate every future meal. Keep space available for needs that become clear through use."
-      }
+    "whyItMatters": [
+      "Most kitchen checklists are long because they try to cover every kind of cook. Your list only needs to cover the jobs that happen in your kitchen: preparing food, cooking it, serving it, storing what remains, and cleaning up safely.",
+      "A short, useful checklist makes shopping easier. It also gives you permission to skip gadgets that solve problems you don't have. Start with fundamental tools, learn what they can do, and let your routine reveal what is missing."
     ],
+    "keyTakeaways": [
+      "Buy for essential kitchen jobs rather than trying to complete a matching collection.",
+      "One chef's knife, cutting board, mixing bowl, and a few suitable pieces of cookware can cover a surprising amount.",
+      "A food thermometer is a practical safety tool, especially while you're learning how cooked food should look and feel.",
+      "Sharp knives are easier to control because they require less force. Maintain the edge and use a stable cutting surface.",
+      "Storage containers and basic cleaning tools belong on the essentials list too. Cooking doesn't end when the pan leaves the stove."
+    ],
+    "beginnerTips": [
+      "Choose individual pieces before a full set. It's easier to judge what you need after you've cooked a few regular meals.",
+      "Match cookware size to the task. A pan needs enough room for food to make contact with the hot surface without being crowded.",
+      "Place a damp towel beneath a cutting board if it slides. A stable surface makes prep more comfortable and controlled.",
+      "Use a food thermometer rather than relying only on color or timing when checking whether meat and poultry are safely cooked."
+    ],
+    "commonMistakes": [
+      "Buying specialty gadgets before mastering basic tools. A knife, spoon, bowl, pan, and pot can handle most early cooking tasks.",
+      "Choosing cookware that is too small. Overcrowding traps moisture and makes food steam instead of brown.",
+      "Using a dull knife and compensating with more pressure. Have it sharpened and keep it honed rather than forcing a tired edge.",
+      "Forgetting the less exciting basics. Safe storage, dish towels, soap, and a way to clean food-contact surfaces matter every day."
+    ],
+    "recommendedEssentials": {
+      "intro": "Use this checklist as a filter rather than a demand to buy everything at once. Mino's Simplified Kitchen Kit follows the same idea: choose versatile pieces with clear jobs, then expand only when your cooking routine gives you a reason.",
+      "bundle": {
+        "handle": "simplified-kitchen-kit",
+        "name": "Simplified Kitchen Kit"
+      }
+    },
     "seo": {
       "title": "Kitchen Essentials Checklist | Mino Kitchens",
       "description": "Use a short checklist to cover the basics without padding your shopping list."
@@ -92,24 +128,36 @@
     "title": "Meal Prep Basics",
     "description": "Build a manageable preparation routine before deciding which tools deserve space in your kitchen.",
     "bestFor": ["Busy schedules", "Meal prep beginners"],
-    "sections": [
-      {
-        "heading": "Prepare for real routines",
-        "body": "Choose meals you already enjoy and prepare only the portions your week requires."
-      },
-      {
-        "heading": "Keep the system small",
-        "body": "One preparation block, a short ingredient list, and clear containers are often enough."
-      },
-      {
-        "heading": "Choose tools that reduce steps",
-        "body": "A reliable knife, cutting board, sheet pan or pot, and practical storage usually matter more than specialized prep gadgets."
-      },
-      {
-        "heading": "Store what you will actually eat",
-        "body": "Use portions, labels, and visible placement to make prepared food easy to identify and finish before it is wasted."
-      }
+    "whyItMatters": [
+      "Meal prep is useful when it makes a busy week easier. It doesn't need to mean spending Sunday cooking seven identical meals or buying a cabinet full of matching containers.",
+      "A better starting point is one small preparation session built around food you already like. Organize your ingredients before cooking, use tools that reduce repeated steps, and store portions so they're easy to cool, identify, and use."
     ],
+    "keyTakeaways": [
+      "Prepare for the week you actually have, not an ideal routine that will be hard to repeat.",
+      "Mise en place—getting ingredients and tools ready before cooking—keeps a multi-part prep session under control.",
+      "Separate raw meat and its tools from produce and ready-to-eat food to prevent cross-contamination.",
+      "Divide large batches into shallow containers and refrigerate perishable food promptly so it cools safely.",
+      "Label containers and keep older portions visible. A good system helps you eat the food, not just store it."
+    ],
+    "beginnerTips": [
+      "Begin with two or three components that can be combined in different ways, such as a grain, roasted vegetables, and one protein.",
+      "Read every recipe first, then chop and measure before the stove is on. This prevents one pan from burning while you prepare the next ingredient.",
+      "Clean as you cook. Use simmering or baking time to wash the board, knife, and mixing bowl you no longer need.",
+      "Portion food into shallow containers rather than leaving a large batch in one deep pot. Refrigerate perishables within two hours."
+    ],
+    "commonMistakes": [
+      "Preparing too much food on the first attempt. Start with a few portions and adjust after you see what your week actually uses.",
+      "Using the same unwashed board or utensils for raw meat and ready-to-eat ingredients. Separate them, or wash thoroughly with hot, soapy water between tasks.",
+      "Packing food away without a date. A simple label removes the guesswork and helps older portions get used first.",
+      "Buying specialized prep gadgets to save seconds. A sharp knife, stable board, mixing bowl, suitable pan, and practical containers usually do more."
+    ],
+    "recommendedEssentials": {
+      "intro": "For a first meal-prep routine, look for tools that handle several parts of the week rather than one narrow task. The Everyday Cooking Kit supports flexible hot meals, reheating, soups, and sauces without turning meal prep into a separate hobby.",
+      "bundle": {
+        "handle": "everyday-cooking-kit",
+        "name": "Everyday Cooking Kit"
+      }
+    },
     "seo": {
       "title": "Meal Prep Basics | Mino Kitchens",
       "description": "Build a simple meal-prep routine around useful portions and familiar meals."

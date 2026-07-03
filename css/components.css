@@ -551,6 +551,49 @@ textarea:focus {
   }
 }
 
+/* Practical guide resources: quiet, scannable guidance without article-style bulk. */
+.guide-resource-section > p + p {
+  margin-top: var(--space-sm);
+}
+
+.guide-resource-list {
+  display: grid;
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  border-top: var(--border-width) solid var(--color-border);
+  list-style: none;
+}
+
+.guide-resource-list li {
+  position: relative;
+  padding: var(--space-sm) 0 var(--space-sm) var(--space-lg);
+  border-bottom: var(--border-width) solid var(--color-border);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-body);
+}
+
+.guide-resource-list li::before {
+  position: absolute;
+  top: calc(var(--space-sm) + 0.62em);
+  left: var(--space-2xs);
+  width: var(--space-2xs);
+  height: var(--space-2xs);
+  border-radius: 50%;
+  background: var(--color-secondary);
+  content: "";
+}
+
+.guide-essential-link {
+  display: inline-flex;
+  min-height: var(--control-height);
+  margin-top: var(--space-md);
+  color: var(--color-primary);
+  font-weight: 600;
+  align-items: center;
+  text-decoration-color: var(--color-secondary);
+  text-underline-offset: var(--space-2xs);
+}
+
 /* Product-selection story and purpose-led bundle tools. */
 .section-followup-link,
 .catalog-context-link {

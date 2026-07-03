@@ -80,6 +80,20 @@
   function createStandardGuideContent(guide) {
     const content = document.createElement("div");
     content.className = "article-content";
+
+    const structuredSections = [
+      createWhyItMatters(guide?.whyItMatters),
+      createStandardListSection("Key Takeaways", guide?.keyTakeaways),
+      createStandardListSection("Beginner Tips", guide?.beginnerTips),
+      createStandardListSection("Common Mistakes", guide?.commonMistakes),
+      createRecommendedEssentials(guide?.recommendedEssentials)
+    ].filter(Boolean);
+
+    if (structuredSections.length) {
+      structuredSections.forEach(section => content.appendChild(section));
+      return content;
+    }
+
     MinoValidator.safeArray(guide?.sections).forEach(section => {
       const block = document.createElement("section");
       const heading = document.createElement("h2");
@@ -91,6 +105,68 @@
     });
 
     return content;
+  }
+
+  function createWhyItMatters(paragraphs) {
+    const items = MinoValidator.safeArray(paragraphs).filter(Boolean);
+    if (!items.length) return null;
+
+    const section = createStandardSection("Why It Matters");
+    items.forEach(text => {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = MinoValidator.safeText(text);
+      section.appendChild(paragraph);
+    });
+    return section;
+  }
+
+  function createStandardListSection(title, items) {
+    const values = MinoValidator.safeArray(items).filter(Boolean);
+    if (!values.length) return null;
+
+    const section = createStandardSection(title);
+    const list = document.createElement("ul");
+    list.className = "guide-resource-list";
+    values.forEach(text => {
+      const item = document.createElement("li");
+      item.textContent = MinoValidator.safeText(text);
+      list.appendChild(item);
+    });
+    section.appendChild(list);
+    return section;
+  }
+
+  function createRecommendedEssentials(recommendation) {
+    if (!recommendation) return null;
+
+    const section = createStandardSection("Recommended Essentials");
+    const intro = MinoValidator.safeText(recommendation.intro).trim();
+    if (intro) {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = intro;
+      section.appendChild(paragraph);
+    }
+
+    if (recommendation.bundle) {
+      const link = document.createElement("a");
+      link.className = "guide-essential-link";
+      link.href = `bundle.html?handle=${encodeURIComponent(
+        MinoValidator.safeText(recommendation.bundle.handle)
+      )}`;
+      link.textContent = `Explore the ${MinoValidator.safeText(recommendation.bundle.name)}`;
+      section.appendChild(link);
+    }
+
+    return section;
+  }
+
+  function createStandardSection(title) {
+    const section = document.createElement("section");
+    section.className = "guide-resource-section";
+    const heading = document.createElement("h2");
+    heading.textContent = title;
+    section.appendChild(heading);
+    return section;
   }
 
   function createPlaybookContent(guide) {

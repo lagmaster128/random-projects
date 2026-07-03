@@ -218,7 +218,38 @@
 
     if (guide.type === "playbook") {
       validatePlaybookGuide(guide, warnings);
-    } else if (guide.sections !== undefined && !Array.isArray(guide.sections)) {
+    } else {
+      validateStandardGuide(guide, warnings);
+    }
+
+    return createResult(errors, warnings);
+  }
+
+  function validateStandardGuide(guide, warnings) {
+    const structuredFields = [
+      "whyItMatters",
+      "keyTakeaways",
+      "beginnerTips",
+      "commonMistakes"
+    ];
+    const hasStructuredContent = structuredFields.some(field =>
+      Array.isArray(guide[field]) && guide[field].length > 0
+    );
+
+    structuredFields.forEach(field => {
+      if (guide[field] !== undefined && !Array.isArray(guide[field])) {
+        warnings.push(`${field} should be an array; that section will be hidden`);
+      }
+    });
+
+    if (guide.recommendedEssentials !== undefined &&
+        !isRecord(guide.recommendedEssentials)) {
+      warnings.push("recommendedEssentials should be an object; that section will be hidden");
+    }
+
+    if (hasStructuredContent) return;
+
+    if (guide.sections !== undefined && !Array.isArray(guide.sections)) {
       warnings.push("sections should be an array; an empty array will be used");
     } else if (!guide.sections || guide.sections.length === 0) {
       warnings.push("Guide has no content sections");
@@ -229,8 +260,6 @@
         }
       });
     }
-
-    return createResult(errors, warnings);
   }
 
   function validatePlaybookGuide(guide, warnings) {

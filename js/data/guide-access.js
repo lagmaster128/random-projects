@@ -53,6 +53,11 @@
       summary,
       description: summary,
       bestFor: normalizeTextList(source.bestFor),
+      whyItMatters: normalizeTextList(source.whyItMatters),
+      keyTakeaways: normalizeTextList(source.keyTakeaways),
+      beginnerTips: normalizeTextList(source.beginnerTips),
+      commonMistakes: normalizeTextList(source.commonMistakes),
+      recommendedEssentials: normalizeRecommendedEssentials(source.recommendedEssentials),
       heroImage: MinoValidator.safeImagePath(source.heroImage),
       status: source.status || "published",
       sections: MinoValidator.safeArray(source.sections)
@@ -109,12 +114,35 @@
       : null;
   }
 
+  function normalizeRecommendedEssentials(recommendation) {
+    if (!recommendation || typeof recommendation !== "object") {
+      return null;
+    }
+
+    const intro = MinoValidator.safeText(recommendation.intro).trim();
+    const bundle = normalizeSupportingBundle(recommendation.bundle);
+
+    return intro || bundle ? { intro, bundle } : null;
+  }
+
   function cloneGuide(guide) {
     return guide
       ? {
           ...guide,
           sections: guide.sections.map(section => ({ ...section })),
           bestFor: guide.bestFor.map(value => value),
+          whyItMatters: guide.whyItMatters.map(value => value),
+          keyTakeaways: guide.keyTakeaways.map(value => value),
+          beginnerTips: guide.beginnerTips.map(value => value),
+          commonMistakes: guide.commonMistakes.map(value => value),
+          recommendedEssentials: guide.recommendedEssentials
+            ? {
+                ...guide.recommendedEssentials,
+                bundle: guide.recommendedEssentials.bundle
+                  ? { ...guide.recommendedEssentials.bundle }
+                  : null
+              }
+            : null,
           mealsEnabled: guide.mealsEnabled.map(meal => meal),
           essentialTools: guide.essentialTools.map(tool => ({ ...tool })),
           optionalTools: guide.optionalTools.map(tool => ({ ...tool })),
